@@ -21,16 +21,10 @@ namespace Juego
             Paso3 = p3;
             Paso4 = p4;
         }
+    }
 
-        public Receta armadoAleatorioReceta()
-        {
-            string [] recetas = {"Torta Tres Leches", "Cheesecake", "Torta Red Velvet", "Tiramisu", "Carrot Cake", "SacheTorte", "Torta Selva Negra", "Lemon Pie", "Pavlova", "Banoffe", "Croquembuche", "Torta Rogel", "Chocotorta", "Tarta Tatin", "Victoria Sponge Cake", "Torta Balcarce", "Palo de Jacob", "Imperial Ruso", "Saint Honoré", "Torta Invertida"};
-            var semilla = Environment.TickCount;
-            var rnd = new Random();
-            Receta recetaArmada = new Receta(recetas[rnd.Next(0, recetas.Length)], rnd.Next(0,2), rnd.Next(0,2), rnd.Next(0,2), rnd.Next(0,2));
-            return recetaArmada;
-        }
-
+    class Competencia
+    {
         public float puntajePlato(Receta receta, int eleccionPaso1, int eleccionPaso2, int eleccionPaso3, int eleccionPaso4)
         {
             float puntaje = 0;
@@ -52,19 +46,21 @@ namespace Juego
             }
             return puntaje;
         }
-
         public void preparadoReceta(Pastelero jugador, Juez juez, List<Pastelero> pasteleros)
         {
             var semilla = Environment.TickCount;
             var rnd = new Random();
+            string [] recetas = {"Torta Tres Leches", "Cheesecake", "Torta Red Velvet", "Tiramisu", "Carrot Cake", "SacheTorte", "Torta Selva Negra", "Lemon Pie", "Pavlova", "Banoffe", "Croquembuche", "Torta Rogel", "Chocotorta", "Tarta Tatin", "Victoria Sponge Cake", "Torta Balcarce", "Palo de Jacob", "Imperial Ruso", "Saint Honoré", "Torta Invertida", "Alfajores de maicena"};
+            Receta recetaAleatoria = new Receta(recetas[rnd.Next(0, recetas.Length)], rnd.Next(0,2), rnd.Next(0,2), rnd.Next(0,2), rnd.Next(0,2));
 
-            Receta recetaAleatoria = armadoAleatorioReceta();
+            Console.WriteLine($"El postre a preparar es: {recetaAleatoria.NombreReceta}");
             string [] opcionesPaso1 = {"Azucar mascabo", "Azucar blanca"};
             string [] opcionesPaso2 = {"Picos firmes", "Picos suaves"};
             string [] opcionesPaso3 = {"Manteca", "Aceite"};
             string [] opcionesPaso4 = {"180 °C", "220 °C"};
-
-            Menu menuPaso1 = new Menu("Selecciona el azucar a utlizar.", opcionesPaso1);
+            Console.WriteLine("\nPresione cualquier tecla para continuar.");
+            Console.ReadKey();
+            Menu menuPaso1 = new Menu("Selecciona el azucar a utilizar.", opcionesPaso1);
             int decisionPaso1 = menuPaso1.Correr();
             Menu menuPaso2 = new Menu("Selecciona el punto al que batir las claras.", opcionesPaso2);
             int decisionPaso2 = menuPaso2.Correr();
@@ -85,11 +81,8 @@ namespace Juego
             }
         }
 
-    }
-
-    class Competencia
-    {
-        private Pastelero eliminarPasteleroPuntuacionMasBaja(List <Pastelero> pasteleros)
+    
+        public Pastelero eliminarPasteleroPuntuacionMasBaja(List <Pastelero> pasteleros)
         {
             Pastelero pasteleroEliminado = null;
             float menorPuntuacion = float.MaxValue;
@@ -103,49 +96,71 @@ namespace Juego
             }
             return pasteleroEliminado;
         }
-        public static List<Pastelero> PrimeraRonda(Pastelero jugador, List<Pastelero> pasteleros, List<Juez> jueces, Receta receta)
+        public List<Pastelero> PrimeraRonda(Pastelero jugador, List<Pastelero> pasteleros, List<Juez> jueces)
         {
-            Competencia competencia = new Competencia();
             var semilla = Environment.TickCount;
             var rnd = new Random();
             Juez juezElegido = jueces[rnd.Next(0, jueces.Count)];
             Console.WriteLine("BIENVENIDOS A LA PRIMERA RONDA");
             Console.WriteLine("En esta ronda se enfrentaran cuatro pasteleros.");
             Console.WriteLine($"El juez asignado es: {juezElegido.Nombre}");
-            receta.preparadoReceta(jugador, juezElegido, pasteleros);
-            Pastelero eliminado = competencia.eliminarPasteleroPuntuacionMasBaja(pasteleros);
+            Console.WriteLine("\nPresione cualquier tecla para continuar.");
+            Console.ReadKey();
+            preparadoReceta(jugador, juezElegido, pasteleros);
+            Pastelero eliminado = eliminarPasteleroPuntuacionMasBaja(pasteleros);
             Console.WriteLine($"El pastelero eliminado es {eliminado.Nombre}");
+            if (eliminado == jugador)
+            {
+                Console.WriteLine("HAZ PERDIDO");
+            }
+            Console.WriteLine("\nPresione cualquier tecla para continuar.");
+            Console.ReadKey();
             pasteleros.Remove(eliminado);
             return pasteleros;
         }
-        public static List<Pastelero> SegundaRonda(Pastelero jugador, List<Pastelero> pasteleros, List<Juez> jueces, Receta receta)
+        public List<Pastelero> SegundaRonda(Pastelero jugador, List<Pastelero> pasteleros, List<Juez> jueces)
         {
-            Competencia competencia = new Competencia();
             var semilla = Environment.TickCount;
             var rnd = new Random();
             Juez juezElegido = jueces[rnd.Next(0, jueces.Count)];
             Console.WriteLine("BIENVENIDOS A LA SEGUNDA RONDA");
             Console.WriteLine("En esta ronda se enfrentaran tres pasteleros.");
             Console.WriteLine($"El juez asignado es: {juezElegido.Nombre}");
-            receta.preparadoReceta(jugador, juezElegido, pasteleros);
-            Pastelero eliminado = competencia.eliminarPasteleroPuntuacionMasBaja(pasteleros);
+            Console.WriteLine("\nPresione cualquier tecla para continuar.");
+            Console.ReadKey();
+            preparadoReceta(jugador, juezElegido, pasteleros);
+            Pastelero eliminado = eliminarPasteleroPuntuacionMasBaja(pasteleros);
             Console.WriteLine($"El pastelero eliminado es {eliminado.Nombre}");
             pasteleros.Remove(eliminado);
+            if (eliminado == jugador)
+            {
+                Console.WriteLine("HAZ PERDIDO");
+            }
+            Console.WriteLine("\nPresione cualquier tecla para continuar.");
+            Console.ReadKey();
             return pasteleros;
         }
-        public static List<Pastelero> RondaFinal(Pastelero jugador, List<Pastelero> pasteleros, List<Juez> jueces, Receta receta)
+        public List<Pastelero> RondaFinal(Pastelero jugador, List<Pastelero> pasteleros, List<Juez> jueces)
         {
-            Competencia competencia = new Competencia();
             var semilla = Environment.TickCount;
             var rnd = new Random();
             Juez juezElegido = jueces[rnd.Next(0, jueces.Count)];
             Console.WriteLine("BIENVENIDOS A LA RONDA FINAL");
             Console.WriteLine("En esta ronda se enfrentaran dos pasteleros.");
             Console.WriteLine($"El juez asignado es: {juezElegido.Nombre}");
-            receta.preparadoReceta(jugador, juezElegido, pasteleros);
-            Pastelero eliminado = competencia.eliminarPasteleroPuntuacionMasBaja(pasteleros);
-            Console.WriteLine($"El ganador de BakeOff es {pasteleros[0]}");
+            Console.WriteLine("\nPresione cualquier tecla para continuar.");
+            Console.ReadKey();
+            preparadoReceta(jugador, juezElegido, pasteleros);
+            Pastelero eliminado = eliminarPasteleroPuntuacionMasBaja(pasteleros);
             pasteleros.Remove(eliminado);
+            if (eliminado == jugador)
+            {
+                Console.WriteLine("HAZ PERDIDO");
+            }
+            foreach (var pastelero in pasteleros)
+            {
+                Console.WriteLine($"El ganador de BakeOff es {pastelero}");
+            }
             return pasteleros;  
         }
     }

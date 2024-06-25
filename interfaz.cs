@@ -2,7 +2,7 @@ using Juego;
 
 public class Interfaz
 {
-    public static void inicioJuego()
+    public void inicioJuego()
     {
         Console.CursorVisible = false;
         Console.Title = "BakeOff";
@@ -47,6 +47,5 @@ public class Interfaz
         Console.ReadKey();
         Console.Clear();
     }
-
 
 }

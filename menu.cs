@@ -17,7 +17,7 @@ namespace Juego
 
         private void mostrarOpciones()
         {
-            Console.WriteLine(pregunta);
+            Console.Write(pregunta);
             for (int i = 0; i < opciones.Length; i++)
             {
                 string opcionActual = opciones [i];
