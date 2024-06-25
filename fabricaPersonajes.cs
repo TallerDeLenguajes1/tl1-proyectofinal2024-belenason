@@ -7,10 +7,10 @@ namespace Juego
             var semilla = Environment.TickCount;
             var rnd = new Random();
             List<Pastelero> Pasteleros= new List<Pastelero>();
-            Pastelero pasteleroCreativo = new Pastelero(new Api().obtenerNombrePasteleros(), rnd.Next(0, 3), 4, rnd.Next(0, 2), rnd.Next(0, 1), "Creatividad");
-            Pastelero pasteleroEstetico = new Pastelero(new Api().obtenerNombrePasteleros(), 4, rnd.Next(0, 3), rnd.Next(0, 1), rnd.Next(0, 2), "Presentacion");
-            Pastelero pasteleroRapido = new Pastelero(new Api().obtenerNombrePasteleros(), rnd.Next(0, 1), rnd.Next(0, 2) , 4, rnd.Next(0, 3), "Rapidez");
-            Pastelero pasteleroSabroso = new Pastelero(new Api().obtenerNombrePasteleros(), rnd.Next(0, 2), 1, rnd.Next(0, 3), 4, "Combinacion de sabores");
+            Pastelero pasteleroCreativo = new Pastelero(new Api().obtenerNombrePasteleros(), rnd.Next(0, 4), 4, rnd.Next(0, 3), rnd.Next(0, 2), "Creatividad");
+            Pastelero pasteleroEstetico = new Pastelero(new Api().obtenerNombrePasteleros(), 4, rnd.Next(0, 4), rnd.Next(0, 2), rnd.Next(0, 3), "Presentacion");
+            Pastelero pasteleroRapido = new Pastelero(new Api().obtenerNombrePasteleros(), rnd.Next(0, 2), rnd.Next(0, 3) , 4, rnd.Next(0, 4), "Rapidez");
+            Pastelero pasteleroSabroso = new Pastelero(new Api().obtenerNombrePasteleros(), rnd.Next(0, 3), rnd.Next(0, 2), rnd.Next(0, 4), 4, "Combinacion de sabores");
             Pasteleros.Add(pasteleroCreativo);
             Pasteleros.Add(pasteleroEstetico);
             Pasteleros.Add(pasteleroRapido);

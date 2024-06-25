@@ -34,7 +34,6 @@ public class Interfaz
         Console.SetCursorPosition((Console.BufferWidth - mensajeInicio.Length) / 2, (Console.BufferHeight / 2) + 2);
         Console.WriteLine(mensajeInicio);
 
-        // Esperar a que se presione una tecla
         Console.ReadKey();
         Console.Clear();
         Console.WriteLine("Bienvenido a la nueva edicion de BakeOff.");
@@ -49,5 +48,5 @@ public class Interfaz
         Console.Clear();
     }
 
-    
+
 }

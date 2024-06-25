@@ -9,12 +9,14 @@ namespace Juego
         private int rapidez;
         private int sabor;
         private string especialidad;
+        private float puntuacionUltimaRonda;
         public string Nombre {get => nombre; set => nombre = value;}
         public int Presentacion {get => presentacion; set => presentacion = value;}
         public int Creatividad {get => creatividad; set => creatividad = value;}
         public int Rapidez {get => rapidez; set => rapidez = value;}
         public int Sabor {get => sabor; set => sabor = value;}
         public string Especialidad {get => especialidad; set => especialidad = value;}
+        public float PuntuacionUltimaRonda {get => puntuacionUltimaRonda; set => puntuacionUltimaRonda = value;}
 
 
         public Pastelero(string nombre, int presentacion, int creatividad, int rapidez, int sabor, string especialidad)

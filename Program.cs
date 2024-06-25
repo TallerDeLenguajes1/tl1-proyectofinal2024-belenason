@@ -1,4 +1,5 @@
 ﻿using Juego;
+using Interfaz;
 //Ideas: competencia de cocina. Hay varios campos en los que se compite donde haces decisiones (sabor elegido, color, dulce o salado, etc.). Se elige al azar en cada ronda el valor que tendra cada opción, y el q termine teniendo más puntos gana. En el caso de que haya un empate, dependera de tu carisma (pensar en lo que hicieron con lo de recomendar algo y ver si se mete gol o no.)
 List<Pastelero> pasteleros;
 fabricaDePersonajes fabrica = new fabricaDePersonajes();
@@ -78,20 +79,26 @@ static void juego(List<Pastelero> pasteleros)
         case 0:
             elegido = pasteleros[0];
             Console.WriteLine("Se selecciono Pastelero 1");
+            //pasteleros.Remove(pasteleros[0]);
             break;
         case 1:
             elegido = pasteleros[1];
             Console.WriteLine("Se selecciono Pastelero 2");
+            //pasteleros.Remove(pasteleros[1]);
             break;
         case 2:
             elegido = pasteleros[2];
             Console.WriteLine("Se selecciono Pastelero 3");
+            //pasteleros.Remove(pasteleros[2]);
             break;
         case 3:
             elegido = pasteleros[4];
             Console.WriteLine("Se selecciono Pastelero 4");
+            //pasteleros.Remove(pasteleros[3]);
             break;
     }
+
+    
     
 
 }
