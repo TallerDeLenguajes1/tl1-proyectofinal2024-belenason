@@ -1,11 +1,11 @@
 using System.Net;
 using System.Text.Json;
 
-namespace ProyectoTaller
+namespace Juego
 {
     public class Api
     {
-        public string obtenerNombreChefs()
+        public string obtenerNombrePasteleros()
         {
             string url = "https://fakerapi.it/api/v1/users?_quantity=1&_gender=female";
             string jsonResponse = MakeRequest(url);

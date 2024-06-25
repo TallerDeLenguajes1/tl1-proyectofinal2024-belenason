@@ -1,25 +1,25 @@
-namespace gestionPersonajes
+namespace Juego
 {
     
-    class Chef
+    class Pastelero
     {
-        private string nombre; // Dps cambiar para que se obtenga de una API
+        private string nombre;
         private int presentacion;
         private int creatividad;
         private int rapidez;
         private int sabor;
         private string especialidad;
         public string Nombre {get => nombre; set => nombre = value;}
-        public int Presentacion {get => presentacion; set => presentacion = value;} // Rango de 1 a 10
-        public int Creatividad {get => creatividad; set => creatividad = value;} // Rango de 1 a 10
-        public int Rapidez {get => rapidez; set => rapidez = value;} // Rango de 1 a 10
-        public int Sabor {get => sabor; set => sabor = value;} // Rango de 1 a 10
+        public int Presentacion {get => presentacion; set => presentacion = value;}
+        public int Creatividad {get => creatividad; set => creatividad = value;}
+        public int Rapidez {get => rapidez; set => rapidez = value;}
+        public int Sabor {get => sabor; set => sabor = value;}
         public string Especialidad {get => especialidad; set => especialidad = value;}
 
 
-        public Chef(string nombre, int presentacion, int creatividad, int rapidez, int sabor, string especialidad)
+        public Pastelero(string nombre, int presentacion, int creatividad, int rapidez, int sabor, string especialidad)
         {
-            Nombre = nombre; // Dps cambiar para que se obtenga de una API
+            Nombre = nombre;
             Presentacion = presentacion;
             Creatividad = creatividad;
             Rapidez = rapidez;
@@ -27,7 +27,7 @@ namespace gestionPersonajes
             Especialidad = especialidad;
         }
 
-        public void mostrarInfoChef()
+        public void mostrarInfoPastelero()
         {
             Console.WriteLine($"Nombre: {Nombre}");
             Console.WriteLine($"Especialidad: {Especialidad}");
@@ -36,7 +36,7 @@ namespace gestionPersonajes
 
     class Juez
     {
-        private string nombre; // Dps cambiar para que se obtenga de una API
+        private string nombre;
         private int ecuacionPuntua;
         public string Nombre {get => nombre; set => nombre = value;}
         public int EcuacionPuntua {get => ecuacionPuntua; set => ecuacionPuntua = value;}

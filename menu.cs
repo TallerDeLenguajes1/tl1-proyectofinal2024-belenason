@@ -1,67 +1,71 @@
-class Menu 
+namespace Juego
 {
-    private int indiceSelecc;
-
-    private string [] opciones;
-    private string pregunta; 
-
-    public Menu (string Pregunta, string [] Opciones)
+        
+    class Menu 
     {
-        pregunta = Pregunta;
-        opciones = Opciones;
-        indiceSelecc = 0;
-    }
+        private int indiceSelecc;
 
-    private void mostrarOpciones()
-    {
-        Console.WriteLine(pregunta);
-        for (int i = 0; i < opciones.Length; i++)
+        private string [] opciones;
+        private string pregunta; 
+
+        public Menu (string Pregunta, string [] Opciones)
         {
-            string opcionActual = opciones [i];
-            string prefijo;
-
-            if (i == indiceSelecc)
-            {
-                prefijo = "*";
-                Console.ForegroundColor = ConsoleColor.Black;
-                Console.BackgroundColor = ConsoleColor.White;
-            } else
-            {
-                prefijo = " ";
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.BackgroundColor = ConsoleColor.Black;
-            }
-            Console.WriteLine($"{prefijo} << {opcionActual} >>");
+            pregunta = Pregunta;
+            opciones = Opciones;
+            indiceSelecc = 0;
         }
-        Console.ResetColor();
-    }
 
-    public int Correr()
-    {
-        ConsoleKey teclaPresionada;
-        do
+        private void mostrarOpciones()
         {
-            Console.Clear();
-            mostrarOpciones();
-            ConsoleKeyInfo infoTeclaPresionada = Console.ReadKey(true);
-            teclaPresionada = infoTeclaPresionada.Key;
+            Console.WriteLine(pregunta);
+            for (int i = 0; i < opciones.Length; i++)
+            {
+                string opcionActual = opciones [i];
+                string prefijo;
 
-            if (teclaPresionada == ConsoleKey.UpArrow)
-            {
-                indiceSelecc--;
-                if (indiceSelecc == -1)
+                if (i == indiceSelecc)
                 {
-                    indiceSelecc = opciones.Length - 1;
-                }
-            } else if (teclaPresionada == ConsoleKey.DownArrow)
-            {
-                indiceSelecc++;
-                if (indiceSelecc == opciones.Length)
+                    prefijo = "*";
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    Console.BackgroundColor = ConsoleColor.White;
+                } else
                 {
-                    indiceSelecc = 0;
+                    prefijo = " ";
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.BackgroundColor = ConsoleColor.Black;
                 }
+                Console.WriteLine($"{prefijo} << {opcionActual} >>");
             }
-        } while (teclaPresionada != ConsoleKey.Enter);
-        return indiceSelecc;
+            Console.ResetColor();
+        }
+
+        public int Correr()
+        {
+            ConsoleKey teclaPresionada;
+            do
+            {
+                Console.Clear();
+                mostrarOpciones();
+                ConsoleKeyInfo infoTeclaPresionada = Console.ReadKey(true);
+                teclaPresionada = infoTeclaPresionada.Key;
+
+                if (teclaPresionada == ConsoleKey.UpArrow)
+                {
+                    indiceSelecc--;
+                    if (indiceSelecc == -1)
+                    {
+                        indiceSelecc = opciones.Length - 1;
+                    }
+                } else if (teclaPresionada == ConsoleKey.DownArrow)
+                {
+                    indiceSelecc++;
+                    if (indiceSelecc == opciones.Length)
+                    {
+                        indiceSelecc = 0;
+                    }
+                }
+            } while (teclaPresionada != ConsoleKey.Enter);
+            return indiceSelecc;
+        }
     }
 }
