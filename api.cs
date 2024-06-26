@@ -1,87 +1,43 @@
-using System.Net;
 using System.Text.Json;
 
 namespace Juego
 {
     public class Api
     {
-        public string obtenerNombrePasteleros()
+        public async Task<string> ObtenerNombrePasteleros()
         {
             string url = "https://fakerapi.it/api/v1/users?_quantity=1&_gender=female";
-            string jsonResponse = MakeRequest(url);
-            string nombre = ExtractName(jsonResponse);
-            string apellido = ExtractLastname(jsonResponse);
-            string nombreChef = nombre + " " + apellido;
-            return nombreChef;
-        }
-        static string MakeRequest(string url)
-        {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = "GET";
+            Root jsonResponse = await MakeRequestAsync(url);
+            string nombre = jsonResponse.Data[0].Firstname;
+            string apellido = jsonResponse.Data[0].Lastname;
+            string nombrePastelero = $"{nombre} {apellido}";
+            return nombrePastelero;
 
-            string jsonResponse;
-
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            {
-                using (Stream stream = response.GetResponseStream())
-                {
-                    using (StreamReader reader = new StreamReader(stream))
-                    {
-                        jsonResponse = reader.ReadToEnd();
-                    }
-                }
-            }
-
-            return jsonResponse;
-        }
-        private string ExtractName(string jsonResponse)
-        {
-            string name = string.Empty;
-
-            // Parsear la respuesta JSON
-            using (JsonDocument jsonDocument = JsonDocument.Parse(jsonResponse))
-            {
-                // Extraer el arreglo de personas
-                JsonElement root = jsonDocument.RootElement;
-                if (root.TryGetProperty("data", out JsonElement dataArray))
-                {
-                    if (dataArray.ValueKind == JsonValueKind.Array && dataArray.GetArrayLength() > 0)
-                    {
-                        // Tomar el primer nombre de la lista (siempre hay uno en este caso)
-                        if (dataArray[0].TryGetProperty("firstname", out JsonElement nameElement))
-                        {
-                            name = nameElement.GetString();
-                        }
-                    }
-                }
-            }
-
-            return name;
         }
 
-        private string ExtractLastname(string jsonResponse)
+        public string NombrePastelero()
         {
-            string lastname = string.Empty;
+            string nombre = ObtenerNombrePasteleros().Result;
+            return nombre;
+        }
 
-            // Parsear la respuesta JSON
-            using (JsonDocument jsonDocument = JsonDocument.Parse(jsonResponse))
+        static async Task<Root> MakeRequestAsync(string url)
+        {
+            try
             {
-                // Extraer el arreglo de personas
-                JsonElement root = jsonDocument.RootElement;
-                if (root.TryGetProperty("data", out JsonElement dataArray))
-                {
-                    if (dataArray.ValueKind == JsonValueKind.Array && dataArray.GetArrayLength() > 0)
-                    {
-                        // Tomar el primer nombre de la lista (siempre hay uno en este caso)
-                        if (dataArray[0].TryGetProperty("lastname", out JsonElement lastnameElement))
-                        {
-                            lastname = lastnameElement.GetString();
-                        }
-                    }
-                }
+                HttpClient client = new HttpClient();
+                HttpResponseMessage response = await client.GetAsync(url);
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Root infoMujer = JsonSerializer.Deserialize<Root>(responseBody);
+                return infoMujer;
             }
-
-            return lastname;
+            catch (HttpRequestException ex)
+            {
+                // Manejar errores de solicitud aquí
+                Console.WriteLine($"Problemas de acceso a la API: {ex.Message}");
+                return null;
+            }
         }
     }
 }

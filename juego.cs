@@ -14,9 +14,9 @@ namespace Juego
             Competencia competencia = new Competencia();
             interfaz.inicioJuego();
             Pastelero jugador = EleccionPastelero(pasteleros);
-            pasteleros = competencia.PrimeraRonda(jugador, pasteleros, jueces);
-            pasteleros = competencia.SegundaRonda(jugador, pasteleros, jueces);
-            pasteleros = competencia.RondaFinal(jugador, pasteleros, jueces);
+            pasteleros = competencia.PrimeraRonda(jugador, pasteleros, jueces, interfaz);
+            pasteleros = competencia.SegundaRonda(jugador, pasteleros, jueces, interfaz);
+            pasteleros = competencia.RondaFinal(jugador, pasteleros, jueces, interfaz);
 
         }
 
@@ -30,8 +30,9 @@ namespace Juego
                 Console.WriteLine($"Pastelero {i}:");
                 opcionPastelero.mostrarInfoPastelero();
                 i++;
+                Console.Write("\n");
             }
-            Console.WriteLine("\nPresione cualquier tecla para continuar.");
+            Console.WriteLine("Presione cualquier tecla para continuar.");
             Console.ReadKey();
             Console.Clear();
             string [] opciones = {"Pastelero creativo ", "Pastelero especializado en decoracion", "Pastelero rapido", "Pastelero especializado en sabores"};
@@ -54,7 +55,7 @@ namespace Juego
                     Console.WriteLine($"Se selecciono a {elegido.Nombre}");
                     break;
                 case 3:
-                    elegido = pasteleros[4];
+                    elegido = pasteleros[3];
                     Console.WriteLine($"Se selecciono a {elegido.Nombre}");
                     break;
             }
