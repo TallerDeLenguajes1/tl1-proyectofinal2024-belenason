@@ -1,4 +1,3 @@
-
 namespace Juego
 {
     class Receta
@@ -60,6 +59,7 @@ namespace Juego
             string [] opcionesPaso3 = {"Manteca", "Aceite"};
             string [] opcionesPaso4 = {"180 °C", "220 °C"};
             float gradingPlato;
+            string decisionesJugador = "Decidiste ";
             if (pasteleros.Contains(jugador))
             {
                 Console.WriteLine("\nA continuacion debera tomar tomar decisiones sobre el preparado del postre.");
@@ -72,19 +72,85 @@ namespace Juego
                 int decisionPaso3 = menuPaso3.Correr();
                 Menu menuPaso4 = new Menu("Selecciona la temperatura a la que cocinar la torta.", opcionesPaso4);
                 int decisionPaso4 = menuPaso4.Correr();
+                if (decisionPaso1 == 0)
+                {
+                    decisionesJugador = decisionesJugador + "usar el azucar mascabo, ";
+                } else
+                {
+                    decisionesJugador = decisionesJugador + "usar el azucar blanca, ";
+                }
+                if (decisionPaso1 == 0)
+                {
+                    decisionesJugador = decisionesJugador + "batir las claras hasta obtener picos firmes, ";
+                } else
+                {
+                    decisionesJugador = decisionesJugador + "batir las claras hasta obtener picos suaves, ";
+                }
+                if (decisionPaso1 == 0)
+                {
+                    decisionesJugador = decisionesJugador + "usar la manteca y";
+                } else
+                {
+                    decisionesJugador = decisionesJugador + "usar el aceite y";
+                }
+                if (decisionPaso1 == 0)
+                {
+                    decisionesJugador = decisionesJugador + " cocinar el postre a 180 °C.";
+                } else
+                {
+                    decisionesJugador = decisionesJugador + " cocinar el postre a 220 °C.";
+                }
                 gradingPlato = puntajePlato(recetaAleatoria, decisionPaso1, decisionPaso2, decisionPaso3, decisionPaso4);
                 jugador.PuntuacionUltimaRonda = juez.calcularPuntuacion(jugador.Creatividad, jugador.Presentacion, jugador.Rapidez, jugador.Sabor, gradingPlato);
+            } else
+            {
+                Console.ReadKey();
             }
             Console.Clear();
             Console.WriteLine($"Veamos como les fue a nuestros pasteleros en la preparacion de {recetaAleatoria.NombreReceta}");
+            string preparadoCorrecto = "La correcta preparacion del postre consistia en ";
+            if (recetaAleatoria.Paso1 == 0)
+            {
+                preparadoCorrecto = preparadoCorrecto + "usar el azucar mascabo, ";
+            } else
+            {
+                preparadoCorrecto = preparadoCorrecto + "usar el azucar blanca, ";
+            }
+            if (recetaAleatoria.Paso1 == 0)
+            {
+                preparadoCorrecto = preparadoCorrecto + "batir las claras hasta obtener picos firmes, ";
+            } else
+            {
+                preparadoCorrecto = preparadoCorrecto + "batir las claras hasta obtener picos suaves, ";
+            }
+            if (recetaAleatoria.Paso1 == 0)
+            {
+                preparadoCorrecto = preparadoCorrecto + "utilizar la manteca y";
+            } else
+            {
+                preparadoCorrecto = preparadoCorrecto + "utilizar el aceite y";
+            }
+            if (recetaAleatoria.Paso1 == 0)
+            {
+                preparadoCorrecto = preparadoCorrecto + " cocinar a 180°C.";
+            } else
+            {
+                preparadoCorrecto = preparadoCorrecto + " cocinar a 220°C.";
+            }
+            Console.WriteLine(preparadoCorrecto);
+            if (decisionesJugador !=  "Decidiste ")
+            {
+                Console.WriteLine(decisionesJugador);
+                Console.WriteLine($"Recibiste una puntacion de {jugador.PuntuacionUltimaRonda}");
+            }
             foreach (var rival in pasteleros)
             {
                 if (rival != jugador)
                 {
                     gradingPlato = puntajePlato(recetaAleatoria, rnd.Next(0, 2), rnd.Next(0, 2), rnd.Next(0, 2), rnd.Next(0, 2));
                     rival.PuntuacionUltimaRonda = juez.calcularPuntuacion(rival.Creatividad, rival.Presentacion, rival.Presentacion, rival.Rapidez, gradingPlato);  
+                    Console.WriteLine($"{rival.Nombre} recibió una puntuación de {rival.PuntuacionUltimaRonda}");
                 }
-                Console.WriteLine($"{rival.Nombre} recibió una puntuación de {rival.PuntuacionUltimaRonda}");
             }
         }
 
@@ -103,7 +169,7 @@ namespace Juego
             }
             return pasteleroEliminado;
         }
-        public List<Pastelero> PrimeraRonda(Pastelero jugador, List<Pastelero> pasteleros, List<Juez> jueces, Interfaz interfaz)
+        public List<Pastelero> PrimeraRonda(Pastelero jugador, List<Pastelero> pasteleros, List<Juez> jueces)
         {
             var semilla = Environment.TickCount;
             var rnd = new Random();
@@ -115,7 +181,7 @@ namespace Juego
             Console.WriteLine($"El juez asignado es: {juezElegido.Nombre}");
             preparadoReceta(jugador, juezElegido, pasteleros);
             Pastelero eliminado = eliminarPasteleroPuntuacionMasBaja(pasteleros);
-            interfaz.escribirConSuspenso($"\nEl pastelero eliminado es {eliminado.Nombre}");
+            Interfaz.escribirConSuspenso($"\nEl pastelero eliminado es {eliminado.Nombre}");
             if (eliminado == jugador)
             {
                 Console.WriteLine("HAZ PERDIDO");
@@ -127,7 +193,7 @@ namespace Juego
             pasteleros.Remove(eliminado);
             return pasteleros;
         }
-        public List<Pastelero> SegundaRonda(Pastelero jugador, List<Pastelero> pasteleros, List<Juez> jueces, Interfaz interfaz)
+        public List<Pastelero> SegundaRonda(Pastelero jugador, List<Pastelero> pasteleros, List<Juez> jueces)
         {
             var semilla = Environment.TickCount;
             var rnd = new Random();
@@ -139,7 +205,7 @@ namespace Juego
             Console.WriteLine($"El juez asignado es: {juezElegido.Nombre}");
             preparadoReceta(jugador, juezElegido, pasteleros);
             Pastelero eliminado = eliminarPasteleroPuntuacionMasBaja(pasteleros);
-            interfaz.escribirConSuspenso($"\nEl pastelero eliminado es {eliminado.Nombre}");
+            Interfaz.escribirConSuspenso($"\nEl pastelero eliminado es {eliminado.Nombre}");
             pasteleros.Remove(eliminado);
             if (eliminado == jugador)
             {
@@ -151,7 +217,7 @@ namespace Juego
             Console.Clear();
             return pasteleros;
         }
-        public List<Pastelero> RondaFinal(Pastelero jugador, List<Pastelero> pasteleros, List<Juez> jueces, Interfaz interfaz)
+        public List<Pastelero> RondaFinal(Pastelero jugador, List<Pastelero> pasteleros, List<Juez> jueces)
         {
             var semilla = Environment.TickCount;
             var rnd = new Random();
@@ -163,6 +229,7 @@ namespace Juego
             Console.WriteLine($"El juez asignado es: {juezElegido.Nombre}");
             preparadoReceta(jugador, juezElegido, pasteleros);
             Pastelero eliminado = eliminarPasteleroPuntuacionMasBaja(pasteleros);
+            Pastelero ganador = null;
             pasteleros.Remove(eliminado);
             if (eliminado == jugador)
             {
@@ -170,9 +237,73 @@ namespace Juego
             }
             foreach (var pastelero in pasteleros)
             {
-                interfaz.escribirConSuspenso($"\nEl GANADOR de Bake Off Argentina es {pastelero.Nombre}");
+                Interfaz.escribirConSuspenso($"\nEl GANADOR de Bake Off Argentina es {pastelero.Nombre}");
+                if (pastelero == jugador)
+                {
+                    Console.WriteLine("FELICIDADES! HAZ GANADO");
+                }
+                ganador = pastelero;
             }
+            Historial.GuardarEnHistorial(ganador);
             return pasteleros;  
+        }
+        public static bool VolverAJugar()
+        {
+            string [] opciones = {"Si", "No"};
+            Menu pregunta = new Menu("Desea volver a jugar?", opciones);
+            int respuesta = pregunta.Correr();
+            if (respuesta == 0)
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+        }
+        public static Pastelero EleccionPastelero(List<Pastelero> pasteleros)
+        {
+            Console.Clear();
+            Pastelero elegido = null;
+            int i = 1;
+            Console.WriteLine("A continuacion se le mostraran los pasteleros disponibles. Lea bien sus caracteristicas y elija uno");
+            foreach (Pastelero opcionPastelero in pasteleros)
+            {
+                Console.WriteLine($"Pastelero {i}:");
+                opcionPastelero.mostrarInfoPastelero();
+                i++;
+                Console.Write("\n");
+            }
+            Console.WriteLine("Presione cualquier tecla para continuar.");
+            Console.ReadKey();
+            Console.Clear();
+            string [] opciones = {"Pastelero creativo ", "Pastelero especializado en decoracion", "Pastelero rapido", "Pastelero especializado en sabores"};
+            string pregunta = "Seleccione su pastelero para esta ronda";
+            Menu menu1 = new Menu(pregunta, opciones);
+            int indiceSelecc = menu1.Correr();
+
+            switch (indiceSelecc)
+            {
+                case 0:
+                    elegido = pasteleros[0];
+                    Console.WriteLine($"Se selecciono a {elegido.Nombre}");
+                    break;
+                case 1:
+                    elegido = pasteleros[1];
+                    Console.WriteLine($"Se selecciono a {elegido.Nombre}");
+                    break;
+                case 2:
+                    elegido = pasteleros[2];
+                    Console.WriteLine($"Se selecciono a {elegido.Nombre}");
+                    break;
+                case 3:
+                    elegido = pasteleros[3];
+                    Console.WriteLine($"Se selecciono a {elegido.Nombre}");
+                    break;
+            }
+            Console.WriteLine("\nPresione cualquier tecla para continuar.");
+            Console.ReadKey();
+            Console.Clear();
+            return elegido;
         }
     }
 }
