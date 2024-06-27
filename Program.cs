@@ -14,6 +14,14 @@ do
     pasteleros = competencia.RondaFinal(jugador, pasteleros, jueces);
     Console.WriteLine("Presione una tecla para continuar");
     Console.ReadKey();
+    Console.Clear();
+    string [] opciones = {"Si", "No"};
+    Menu pregunta = new Menu("Desea ver el historial de ganadores?", opciones);
+    int respuesta = pregunta.Correr();
+    if (respuesta == 0)
+    {
+        Historial.mostrarHistorial();
+    }
 } while (Competencia.VolverAJugar());
 
 

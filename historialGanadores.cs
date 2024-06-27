@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Net.Http.Json;
-using System.Text.Json.Serialization;
 using System.Text.Json;
 using Juego;
 
@@ -28,6 +23,19 @@ public class Historial
         {
             return new List<Pastelero>();
         }
+    }
+
+    public static void mostrarHistorial()
+    {
+        List<Pastelero> historial = ObtenerHistorial();
+        Console.Clear();
+        Console.WriteLine("----HISTORIAL----");
+        foreach (var ganador in historial)
+        {
+            Console.WriteLine($"Nombre: {ganador.Nombre}");
+        }
+        Console.WriteLine("Presione una tecla para continuar");
+        Console.ReadKey();
     }
 }
 

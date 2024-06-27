@@ -25,6 +25,7 @@ namespace Juego
 
     class Competencia
     {
+        //Función que recibe la receta generada aleatoriamente y los pasos seleccionados ya sea por el jugador o al azar, y calcula el puntaje en relacion a como se hizo el plato
         public float puntajePlato(Receta receta, int eleccionPaso1, int eleccionPaso2, int eleccionPaso3, int eleccionPaso4)
         {
             float puntaje = 0;
@@ -46,6 +47,8 @@ namespace Juego
             }
             return puntaje;
         }
+
+        //Funcion que recibe el jugador, la lista de pasteleros, y el juez que se ha asignado. Genera una receta aleatoriamente, y en caso de que el jugador aun no haya perdido, le permite decidir como preparar el postre;
         public void preparadoReceta(Pastelero jugador, Juez juez, List<Pastelero> pasteleros)
         {
             var semilla = Environment.TickCount;
@@ -59,7 +62,7 @@ namespace Juego
             string [] opcionesPaso3 = {"Manteca", "Aceite"};
             string [] opcionesPaso4 = {"180 °C", "220 °C"};
             float gradingPlato;
-            string decisionesJugador = "Decidiste ";
+            string decisionesJugador = "\nDecidiste ";
             if (pasteleros.Contains(jugador))
             {
                 Console.WriteLine("\nA continuacion debera tomar tomar decisiones sobre el preparado del postre.");
@@ -72,7 +75,7 @@ namespace Juego
                 int decisionPaso3 = menuPaso3.Correr();
                 Menu menuPaso4 = new Menu("Selecciona la temperatura a la que cocinar la torta.", opcionesPaso4);
                 int decisionPaso4 = menuPaso4.Correr();
-                if (decisionPaso1 == 0)
+                if (decisionPaso1 == 0) // Usamos estos if para ir armando una oración que diga como realizó él postre el usuario
                 {
                     decisionesJugador = decisionesJugador + "usar el azucar mascabo, ";
                 } else
@@ -107,8 +110,10 @@ namespace Juego
                 Console.ReadKey();
             }
             Console.Clear();
+            Animaciones.animar();
+            Console.Clear();
             Console.WriteLine($"Veamos como les fue a nuestros pasteleros en la preparacion de {recetaAleatoria.NombreReceta}");
-            string preparadoCorrecto = "La correcta preparacion del postre consistia en ";
+            string preparadoCorrecto = "La correcta preparacion del postre consistia en "; //En este string guardamos la preparacion correcta del postre
             if (recetaAleatoria.Paso1 == 0)
             {
                 preparadoCorrecto = preparadoCorrecto + "usar el azucar mascabo, ";
@@ -138,12 +143,12 @@ namespace Juego
                 preparadoCorrecto = preparadoCorrecto + " cocinar a 220°C.";
             }
             Console.WriteLine(preparadoCorrecto);
-            if (decisionesJugador !=  "Decidiste ")
+            if (decisionesJugador !=  "\nDecidiste ")
             {
                 Console.WriteLine(decisionesJugador);
-                Console.WriteLine($"Recibiste una puntacion de {jugador.PuntuacionUltimaRonda}");
+                Console.WriteLine($"\nRecibiste una puntacion de {jugador.PuntuacionUltimaRonda}.\n");
             }
-            foreach (var rival in pasteleros)
+            foreach (var rival in pasteleros) //Este foreach hace que cada pastelero que no es el jugador haga decisiones al azar y calcula la puntuacion de estos
             {
                 if (rival != jugador)
                 {
@@ -154,7 +159,7 @@ namespace Juego
             }
         }
 
-    
+        //Esta función se fija quien tiene la puntuación más baja y lo elimina. 
         public Pastelero eliminarPasteleroPuntuacionMasBaja(List <Pastelero> pasteleros)
         {
             Pastelero pasteleroEliminado = null;
@@ -184,7 +189,9 @@ namespace Juego
             Interfaz.escribirConSuspenso($"\nEl pastelero eliminado es {eliminado.Nombre}");
             if (eliminado == jugador)
             {
-                Console.WriteLine("HAZ PERDIDO");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nHAZ PERDIDO\n");
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Ahora simplemente podras observar el resto de la competencia.");
             }
             Console.WriteLine("\nPresione cualquier tecla para continuar a la siguiente ronda.");
@@ -209,7 +216,9 @@ namespace Juego
             pasteleros.Remove(eliminado);
             if (eliminado == jugador)
             {
-                Console.WriteLine("HAZ PERDIDO");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nHAZ PERDIDO\n");
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Ahora simplemente podras observar el resto de la competencia.");
             }
             Console.WriteLine("Presione cualquier tecla para continuar a la siguiente ronda.");
@@ -231,16 +240,23 @@ namespace Juego
             Pastelero eliminado = eliminarPasteleroPuntuacionMasBaja(pasteleros);
             Pastelero ganador = null;
             pasteleros.Remove(eliminado);
-            if (eliminado == jugador)
-            {
-                Console.WriteLine("HAZ PERDIDO");
-            }
+
             foreach (var pastelero in pasteleros)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Interfaz.escribirConSuspenso($"\nEl GANADOR de Bake Off Argentina es {pastelero.Nombre}");
+                Console.ForegroundColor = ConsoleColor.White;
+                if (eliminado == jugador)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\nHAZ PERDIDO.\n");
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
                 if (pastelero == jugador)
                 {
-                    Console.WriteLine("FELICIDADES! HAZ GANADO");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\nFELICIDADES! HAZ GANADO.\n");
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
                 ganador = pastelero;
             }
@@ -264,19 +280,21 @@ namespace Juego
         {
             Console.Clear();
             Pastelero elegido = null;
-            int i = 1;
+            int i = 0;
             Console.WriteLine("A continuacion se le mostraran los pasteleros disponibles. Lea bien sus caracteristicas y elija uno");
+            string [] opciones = {"Pastelero creativo: ", "Pastelero especializado en decoracion: ", "Pastelero rapido: ", "Pastelero especializado en sabores: "};
+
             foreach (Pastelero opcionPastelero in pasteleros)
             {
+                opciones[i] = opciones[i] + $"{opcionPastelero.Nombre}";
+                i++;
                 Console.WriteLine($"Pastelero {i}:");
                 opcionPastelero.mostrarInfoPastelero();
-                i++;
                 Console.Write("\n");
             }
             Console.WriteLine("Presione cualquier tecla para continuar.");
             Console.ReadKey();
             Console.Clear();
-            string [] opciones = {"Pastelero creativo ", "Pastelero especializado en decoracion", "Pastelero rapido", "Pastelero especializado en sabores"};
             string pregunta = "Seleccione su pastelero para esta ronda";
             Menu menu1 = new Menu(pregunta, opciones);
             int indiceSelecc = menu1.Correr();
