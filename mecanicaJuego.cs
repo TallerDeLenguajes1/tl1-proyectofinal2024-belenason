@@ -21,10 +21,20 @@ namespace Juego
             Paso3 = p3;
             Paso4 = p4;
         }
+
+        public void SeleccionDeRecetas()
+        {
+            List<Receta> Lista = new List<Receta>
+            {
+                new Receta(),
+
+            };
+        }
     }
 
     class Competencia
     {
+
         //Función que recibe la receta generada aleatoriamente y los pasos seleccionados ya sea por el jugador o al azar, y calcula el puntaje en relacion a como se hizo el plato
         public float puntajePlato(Receta receta, int eleccionPaso1, int eleccionPaso2, int eleccionPaso3, int eleccionPaso4)
         {
@@ -260,7 +270,7 @@ namespace Juego
                 }
                 ganador = pastelero;
             }
-            Historial.GuardarEnHistorial(ganador);
+            HistorialJson.GuardarGanador(ganador);
             return pasteleros;  
         }
         public static bool VolverAJugar()
