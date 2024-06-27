@@ -55,22 +55,22 @@ namespace Juego
             {
                 case 1:
                 {
-                    puntuacion = (float)(0.5 * plato + 0.2*rapidez + 0.1*sabor + 0.1*presentacion + 0.1*creatividad);
+                    puntuacion = (float)(0.6 * plato + 0.2*rapidez + 0.1*sabor + 0.05*presentacion + 0.05*creatividad);
                     break;
                 }
                 case 2:
                 {
-                    puntuacion = (float)(0.5 * plato + 0.2*rapidez + 0.1*sabor + 0.1*presentacion + 0.1*creatividad);
+                    puntuacion = (float)(0.6 * plato + 0.1*rapidez + 0.05*sabor + 0.05*presentacion + 0.2*creatividad);
                     break;
                 }
                 case 3:
                 {
-                    puntuacion = (float)(0.5 * plato + 0.2*rapidez + 0.1*sabor + 0.1*presentacion + 0.1*creatividad);
+                    puntuacion = (float)(0.6 * plato + 0.05*rapidez + 0.05*sabor + 0.2*presentacion + 0.1*creatividad);
                     break;
                 }
                 case 4:
                 {
-                    puntuacion = (float)(0.5 * plato + 0.2*rapidez + 0.1*sabor + 0.1*presentacion + 0.1*creatividad);
+                    puntuacion = (float)(0.6 * plato + 0.05*rapidez + 0.2*sabor + 0.05*presentacion + 0.1*creatividad);
                     break;
                 }
             }

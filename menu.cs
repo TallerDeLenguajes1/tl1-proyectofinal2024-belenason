@@ -90,11 +90,13 @@ namespace Juego
             do
             {
                 Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
                 for (int i = 0; i < asciiArtTitulo.Length; i++)
                 {
                     Console.SetCursorPosition((Console.BufferWidth - asciiArtTitulo[i].Length) / 2, Console.BufferHeight / 4 + i);
                     Console.WriteLine(asciiArtTitulo[i]);
                 }
+                Console.ResetColor();
                 for (int i = 0; i < opciones.Length; i++)
                 {
                     string opcionActual = opciones [i];
@@ -138,7 +140,7 @@ namespace Juego
             {
                 case 0:
                     Console.Clear();
-                    Interfaz.escribirConSuspenso("Cargando...");
+                    Interfaz.escribirConSuspensoCentrado("Cargando...");
                     List<Pastelero> pasteleros;
                     List <Juez> jueces;
                     fabricaDePersonajes fabrica = new fabricaDePersonajes();
@@ -158,8 +160,9 @@ namespace Juego
                     HistorialJson.mostrarHistorial();
                     break;
                 case 2:
+                    Console.Clear();
                     Console.WriteLine("Nos vemos!");
-                    Thread.Sleep(300); 
+                    Thread.Sleep(2000); 
                     Console.Clear();
                     break;
             }

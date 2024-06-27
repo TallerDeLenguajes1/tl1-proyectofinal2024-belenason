@@ -29,13 +29,14 @@ public class Interfaz
             Console.SetCursorPosition((Console.BufferWidth - asciiArtTitulo[i].Length) / 2, Console.BufferHeight / 4 + i);
             Console.WriteLine(asciiArtTitulo[i]);
         }
-
+        Console.ResetColor();
         string mensajeInicio = "Presiona cualquier tecla para comenzar";
         Console.SetCursorPosition((Console.BufferWidth - mensajeInicio.Length) / 2, (Console.BufferHeight / 2) + 2);
         Console.WriteLine(mensajeInicio);
 
         Console.ReadKey();
         Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("Bienvenido a la nueva edicion de BakeOff.");
         Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine(" En esta competencia te enfrentaras contra 3 pasteleros. Se les dira que postre deben cocinar, y procederan a trabajar sin receta alguna. Posteriormente se vera quien acerto mas en la preparación correcta de lo pedido, y se puntuara ello. Se deja a eleccion del pastelero la presentacion y el sabor especifico que desea que su postre tenga, y esto tambien sera evaluado. En cada ronda se eliminara al pastelero que obtenga la puntuacion mas baja.");
@@ -60,4 +61,15 @@ public class Interfaz
         }
         Console.Write("\n");
     }
+    public static void escribirConSuspensoCentrado(string oracion)
+    {
+        Console.SetCursorPosition((Console.BufferWidth - oracion.Length) / 2, Console.BufferHeight / 4);
+        foreach (char c in oracion)
+        {
+            Console.Write(c);
+            Thread.Sleep(50);
+        }
+        Console.Write("\n");
+    }
+
 }
