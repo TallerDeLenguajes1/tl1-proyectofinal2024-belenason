@@ -1,5 +1,6 @@
 ﻿using Juego;
-Interfaz.inicioJuego();
-Menu.MenuInicio();
+Console.Title = "BakeOff";
+Interfaz.TituloInstruccionesDescripcion();
+Game.CorrerJuego();
 
 

@@ -4,41 +4,17 @@ namespace Juego
 {
     public class Api
     {
-        public async Task<string> ObtenerNombrePasteleros()
+        public async Task<string> ArmarNombrePasteleroUsandoApi()
         {
             string url = "https://fakerapi.it/api/v1/users?_quantity=1&_gender=female";
-            Root jsonResponse = await MakeRequestAsync(url);
+            Root jsonResponse = await RealizarPedidoAsincronico(url);
             string nombre = jsonResponse.Data[0].Firstname;
             string apellido = jsonResponse.Data[0].Lastname;
             string nombrePastelero = $"{nombre} {apellido}";
             return nombrePastelero;
         }
 
-        private string ObtenerNombreAlternativo()
-        {
-            string[] nombresAlternativos = { "Belén Ason", "Sofía Rodriguez del Busto", "Milena Salem", "Maia Naessens, Sofia Blasco, Valentina Espeche, Valentina Sucar, Lourdes Ason, Marcela Alexia Lazarte, Mora Bappé, Marie Curie, Naiara Vidal" };
-            Random rand = new Random();
-            return nombresAlternativos[rand.Next(nombresAlternativos.Length)];
-        }
-
-        public string [] NombresPasteleros()
-        {
-            string [] nombres = new string[4];
-            for (int i = 0; i < 4; i++)
-            {
-                try
-                {
-                    nombres[i] = ObtenerNombrePasteleros().Result;
-                }
-                catch
-                {
-                    nombres[i] = ObtenerNombreAlternativo();
-                }
-            }
-            return nombres;
-        }
-
-        static async Task<Root> MakeRequestAsync(string url)
+        static async Task<Root> RealizarPedidoAsincronico(string url)
         {
             try
             {
@@ -49,12 +25,33 @@ namespace Juego
                 Root infoMujer = JsonSerializer.Deserialize<Root>(responseBody);
                 return infoMujer;
             }
-            catch (HttpRequestException ex)
+            catch
             {
-                // Manejar errores de solicitud aquí
-                Console.WriteLine($"Problemas de acceso a la API: {ex.Message}");
                 return null;
             }
+        }
+
+        private string ObtenerNombreAlternativo()
+        {
+            string[] nombresAlternativos = {"Belén Ason", "Sofía Rodriguez del Busto", "Milena Salem", "Maia Naessens, Sofia Blasco, Valentina Espeche, Valentina Sucar, Lourdes Ason, Marcela Alexia Lazarte, Mora Bappé, Marie Curie, Naiara Vidal, Rocio Lardies, Constaza Puertas" };
+            Random rand = new Random();
+            return nombresAlternativos[rand.Next(nombresAlternativos.Length)];
+        }
+
+        public string [] NombresPasteleros()
+        {
+            string [] nombres = new string[4];
+            for (int i = 0; i < 4; i++)
+            {
+                if (ArmarNombrePasteleroUsandoApi().Result != null)
+                {
+                    nombres[i] = ArmarNombrePasteleroUsandoApi().Result;
+                } else
+                {
+                    nombres[i] = ObtenerNombreAlternativo();
+                }
+            }
+            return nombres;
         }
     }
 }

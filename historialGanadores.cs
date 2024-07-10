@@ -6,13 +6,13 @@ public class HistorialJson
 {
     public static void GuardarGanador(Pastelero pastelero)
     {
-        List<Pastelero> historial = LeerGanadores();
+        List<Pastelero> historial = LeerGanadoresDelHistorial();
         historial.Add(pastelero);
         string jsonHistorial = JsonSerializer.Serialize(historial);
         File.WriteAllText("historial.json", jsonHistorial);
     }
 
-    private static List<Pastelero> LeerGanadores()
+    private static List<Pastelero> LeerGanadoresDelHistorial()
     {
         try
         {
@@ -25,18 +25,18 @@ public class HistorialJson
         }
     }
 
-    public static void mostrarHistorial()
+    public static void MostrarHistorial()
     {
-        List<Pastelero> historial = LeerGanadores();
+        List<Pastelero> historial = LeerGanadoresDelHistorial();
         Console.Clear();
-        Console.WriteLine("----HISTORIAL----");
+        Console.WriteLine("----HISTORIAL DE GANADORES----");
         foreach (var ganador in historial)
         {
             Console.WriteLine($"Nombre: {ganador.Nombre}");
         }
         Console.WriteLine("Presione una tecla para volver");
         Console.ReadKey();
-        Menu.MenuInicio();
+        Game.CorrerJuego();
     }
 }
 
