@@ -30,15 +30,15 @@ namespace Juego
             Paso4 = paso4;
         }
 
-        public static void GuardarReceta(Receta receta)
+        public static void GuardarRecetaEnJson(Receta receta)
         {
-            List<Receta> ListaDeRecetas = LeerRecetas();
+            List<Receta> ListaDeRecetas = LeerRecetasDelJson();
             ListaDeRecetas.Add(receta);
             string jsonRecetas= JsonSerializer.Serialize(ListaDeRecetas);
             File.WriteAllText("RecetasJson.json", jsonRecetas);
         }
 
-        private static List<Receta> LeerRecetas()
+        private static List<Receta> LeerRecetasDelJson()
         {
             try
             {
@@ -56,8 +56,8 @@ namespace Juego
         public static Receta SeleccionadorAleatorioReceta() //Funcion que selecciona de forma aleatoria las recetas
         {
             Random rnd = new Random();
-            int index = rnd.Next(LeerRecetas().Count);
-            return LeerRecetas()[index];
+            int index = rnd.Next(LeerRecetasDelJson().Count);
+            return LeerRecetasDelJson()[index];
         }
     }
 }

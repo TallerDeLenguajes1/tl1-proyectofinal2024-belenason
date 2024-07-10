@@ -12,13 +12,30 @@ namespace Juego
             string apellido = jsonResponse.Data[0].Lastname;
             string nombrePastelero = $"{nombre} {apellido}";
             return nombrePastelero;
-
         }
 
-        public string NombrePastelero()
+        private string ObtenerNombreAlternativo()
         {
-            string nombre = ObtenerNombrePasteleros().Result;
-            return nombre;
+            string[] nombresAlternativos = { "Belén Ason", "Sofía Rodriguez del Busto", "Milena Salem", "Maia Naessens, Sofia Blasco, Valentina Espeche, Valentina Sucar, Lourdes Ason, Marcela Alexia Lazarte, Mora Bappé, Marie Curie, Naiara Vidal" };
+            Random rand = new Random();
+            return nombresAlternativos[rand.Next(nombresAlternativos.Length)];
+        }
+
+        public string [] NombresPasteleros()
+        {
+            string [] nombres = new string[4];
+            for (int i = 0; i < 4; i++)
+            {
+                try
+                {
+                    nombres[i] = ObtenerNombrePasteleros().Result;
+                }
+                catch
+                {
+                    nombres[i] = ObtenerNombreAlternativo();
+                }
+            }
+            return nombres;
         }
 
         static async Task<Root> MakeRequestAsync(string url)
