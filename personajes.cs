@@ -28,7 +28,7 @@ namespace Juego
             Especialidad = especialidad;
         }
 
-        public void mostrarInfoPastelero()
+        public void MostrarInfoPastelero()
         {
             Console.WriteLine($"Nombre: {Nombre}");
             Console.WriteLine($"Especialidad: {Especialidad}");
@@ -48,7 +48,7 @@ namespace Juego
             ecuacionPuntua = ec;
         }
 
-        public float calcularPuntuacion(int creatividad, int presentacion, int rapidez, int sabor, float plato)
+        public float CalcularPuntuacion(int creatividad, int presentacion, int rapidez, int sabor, float plato)
         {
             float puntuacion = 0;
             switch (ecuacionPuntua)

@@ -1,7 +1,6 @@
-using System.Drawing;
 namespace Juego
 {
-    class Receta
+    public class Receta
     {
         private string nombreReceta;
         private string [] preguntaPreparacion;
@@ -29,7 +28,8 @@ namespace Juego
             Paso4 = p4;
         }
 
-        public static List<Receta> SeleccionDeRecetas()
+
+        public static List<Receta> SeleccionDeRecetas() //Armamos una lista con recetas
         {
             List<Receta> ListaDeRecetas = new List<Receta>
             {
@@ -44,10 +44,11 @@ namespace Juego
                 new Receta("Tarta Tatin", new string[] {"Que tipo de manzanas se utilizan comúnmente para hacer una tarta Tatin?", "Cuál es la técnica clave para preparar la tarta Tatin?", "Qué tipo de masa se utiliza para cubrir la tarta Tatin?", "Cómo se sirve tradicionalmente la tarta Tatin?"} , new string [][] {new string []{"Manzanas Golden", "Manzanas Granny Smith"}, new string []{"Caramelizar las manzanas antes de hornear", "Cocinar las manzanas junto con la masa"}, new string []{"Masa choux", "Masa quebrada"}, new string []{"Caliente con crema o helado", "Fria con fruta fresca"}}, 1, 0, 1, 0),
                 new Receta("Eclairs", new string[] {"Que tipo de masa se utiliza para hacer eclairs?", "Qué se utiliza comúnmente para rellenar éclairs?", "Cuál es la cobertura tradicional de los éclairs?", "Qué se debe hacer con la masa choux antes de hornearla para hacer éclairs?"} , new string [][] {new string []{"Masa choux", "Masa quebrada"}, new string []{"Crema pastelera", "Mermelada"}, new string []{"Glaseado de chocolate", "Azucar glas"}, new string []{"Enfriarla en el refrigerador", "Formar los éclairs y hornear inmediatamente"}}, 0, 0, 0, 1)
             };
+            HistorialJson.GuardarRecetas(ListaDeRecetas);
             return ListaDeRecetas;
         }
 
-        public static Receta SeleccionadorAleatorioReceta()
+        public static Receta SeleccionadorAleatorioReceta() //Funcion que selecciona de forma aleatoria las recetas
         {
             Random rnd = new Random();
             int index = rnd.Next(SeleccionDeRecetas().Count);
@@ -59,7 +60,7 @@ namespace Juego
     {
 
         //Función que recibe la receta generada aleatoriamente y los pasos seleccionados ya sea por el jugador o al azar, y calcula el puntaje en relacion a como se hizo el plato
-        public float puntajePlato(Receta receta, int eleccionPaso1, int eleccionPaso2, int eleccionPaso3, int eleccionPaso4)
+        public float PuntajePlato(Receta receta, int eleccionPaso1, int eleccionPaso2, int eleccionPaso3, int eleccionPaso4)
         {
             float puntaje = 0;
             if (eleccionPaso1 == receta.Paso1)
@@ -82,7 +83,7 @@ namespace Juego
         }
 
         //Funcion que recibe el jugador, la lista de pasteleros, y el juez que se ha asignado. Genera una receta aleatoriamente, y en caso de que el jugador aun no haya perdido, le permite decidir como preparar el postre;
-        public void preparadoReceta(Pastelero jugador, Juez juez, List<Pastelero> pasteleros)
+        public void PreparadoReceta(Pastelero jugador, Juez juez, List<Pastelero> pasteleros)
         {
             var semilla = Environment.TickCount;
             var rnd = new Random();
@@ -129,8 +130,8 @@ namespace Juego
                     Console.WriteLine("Respuesta incorrecta.");
                 }
                 Console.ReadKey();
-                gradingPlato = puntajePlato(recetaAleatoria, decisionPaso1, decisionPaso2, decisionPaso3, decisionPaso4);
-                jugador.PuntuacionUltimaRonda = juez.calcularPuntuacion(jugador.Creatividad, jugador.Presentacion, jugador.Rapidez, jugador.Sabor, gradingPlato);
+                gradingPlato = PuntajePlato(recetaAleatoria, decisionPaso1, decisionPaso2, decisionPaso3, decisionPaso4);
+                jugador.PuntuacionUltimaRonda = juez.CalcularPuntuacion(jugador.Creatividad, jugador.Presentacion, jugador.Rapidez, jugador.Sabor, gradingPlato);
             } else
             {
                 Console.ReadKey();
@@ -147,8 +148,8 @@ namespace Juego
             {
                 if (rival != jugador)
                 {
-                    gradingPlato = puntajePlato(recetaAleatoria, rnd.Next(0, 2), rnd.Next(0, 2), rnd.Next(0, 2), rnd.Next(0, 2));
-                    rival.PuntuacionUltimaRonda = juez.calcularPuntuacion(rival.Creatividad, rival.Presentacion, rival.Presentacion, rival.Rapidez, gradingPlato);  
+                    gradingPlato = PuntajePlato(recetaAleatoria, rnd.Next(0, 2), rnd.Next(0, 2), rnd.Next(0, 2), rnd.Next(0, 2));
+                    rival.PuntuacionUltimaRonda = juez.CalcularPuntuacion(rival.Creatividad, rival.Presentacion, rival.Presentacion, rival.Rapidez, gradingPlato);  
                     Console.WriteLine($"{rival.Nombre} recibió una puntuación de {rival.PuntuacionUltimaRonda}");
                 }
             }
@@ -181,7 +182,7 @@ namespace Juego
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("\nEn esta ronda se enfrentaran cuatro pasteleros.");
             Console.WriteLine($"El juez asignado es: {juezElegido.Nombre}");
-            preparadoReceta(jugador, juezElegido, pasteleros);
+            PreparadoReceta(jugador, juezElegido, pasteleros);
             Pastelero eliminado = eliminarPasteleroPuntuacionMasBaja(pasteleros);
             Interfaz.escribirConSuspenso($"\nEl pastelero eliminado es {eliminado.Nombre}");
             if (eliminado == jugador)
@@ -208,7 +209,7 @@ namespace Juego
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("\nEn esta ronda se enfrentaran tres pasteleros.");
             Console.WriteLine($"El juez asignado es: {juezElegido.Nombre}");
-            preparadoReceta(jugador, juezElegido, pasteleros);
+            PreparadoReceta(jugador, juezElegido, pasteleros);
             Pastelero eliminado = eliminarPasteleroPuntuacionMasBaja(pasteleros);
             Interfaz.escribirConSuspenso($"\nEl pastelero eliminado es {eliminado.Nombre}");
             pasteleros.Remove(eliminado);
@@ -235,7 +236,7 @@ namespace Juego
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("\nEn esta ronda se enfrentaran nuestros finalistas.");
             Console.WriteLine($"El juez asignado es: {juezElegido.Nombre}");
-            preparadoReceta(jugador, juezElegido, pasteleros);
+            PreparadoReceta(jugador, juezElegido, pasteleros);
             Pastelero eliminado = eliminarPasteleroPuntuacionMasBaja(pasteleros);
             Pastelero ganador = null;
             pasteleros.Remove(eliminado);
@@ -275,7 +276,7 @@ namespace Juego
                 opciones[i] = opciones[i] + $"{opcionPastelero.Nombre}";
                 i++;
                 Console.WriteLine($"Pastelero {i}:");
-                opcionPastelero.mostrarInfoPastelero();
+                opcionPastelero.MostrarInfoPastelero();
                 Console.Write("\n");
             }
             Console.WriteLine("Presione cualquier tecla para continuar.");

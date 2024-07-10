@@ -2,9 +2,8 @@ namespace Juego
 {
     class fabricaDePersonajes
     {
-        public List<Pastelero> crearPasteleros()
+        public List<Pastelero> CrearPasteleros()
         {
-            var semilla = Environment.TickCount;
             var rnd = new Random();
             List<Pastelero> Pasteleros= new List<Pastelero>();
             Pastelero pasteleroCreativo = new Pastelero(new Api().NombrePastelero(), rnd.Next(0, 4), 4, rnd.Next(0, 3), rnd.Next(0, 2), "Creatividad");
@@ -18,7 +17,7 @@ namespace Juego
             return Pasteleros;
         }
 
-        public List<Juez> crearJueces()
+        public List<Juez> CrearJueces()
         {
             List<Juez> jueces= new List<Juez>();
             Juez JuezRapido = new Juez("Maru Botana", 1);

@@ -11,6 +11,13 @@ public class HistorialJson
         string jsonHistorial = JsonSerializer.Serialize(historial);
         File.WriteAllText("historial.json", jsonHistorial);
     }
+    public static void GuardarRecetas(List<Receta> receta)
+    {
+        List<Receta> historial = receta;
+        string jsonHistorial = JsonSerializer.Serialize(historial);
+        File.WriteAllText("RecetasJson.json", jsonHistorial);
+    }
+
 
     private static List<Pastelero> LeerGanadores()
     {

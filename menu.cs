@@ -144,8 +144,8 @@ namespace Juego
                     List<Pastelero> pasteleros;
                     List <Juez> jueces;
                     fabricaDePersonajes fabrica = new fabricaDePersonajes();
-                    pasteleros = fabrica.crearPasteleros();
-                    jueces = fabrica.crearJueces();
+                    pasteleros = fabrica.CrearPasteleros();
+                    jueces = fabrica.CrearJueces();
                     Competencia competencia = new Competencia();
                     Pastelero jugador = Competencia.EleccionPastelero(pasteleros);
                     pasteleros = competencia.PrimeraRonda(jugador, pasteleros, jueces);
