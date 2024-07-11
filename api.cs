@@ -8,10 +8,16 @@ namespace Juego
         {
             string url = "https://fakerapi.it/api/v1/users?_quantity=1&_gender=female";
             Root jsonResponse = await RealizarPedidoAsincronico(url);
-            string nombre = jsonResponse.Data[0].Firstname;
-            string apellido = jsonResponse.Data[0].Lastname;
-            string nombrePastelero = $"{nombre} {apellido}";
-            return nombrePastelero;
+            if (jsonResponse == null)
+            {
+                return null;
+            } else
+            {
+                string nombre = jsonResponse.Data[0].Firstname;
+                string apellido = jsonResponse.Data[0].Lastname;
+                string nombrePastelero = $"{nombre} {apellido}";
+                return nombrePastelero;
+            }
         }
 
         static async Task<Root> RealizarPedidoAsincronico(string url)
@@ -33,9 +39,9 @@ namespace Juego
 
         private string ObtenerNombreAlternativo()
         {
-            string[] nombresAlternativos = {"Belén Ason", "Sofía Rodriguez del Busto", "Milena Salem", "Maia Naessens, Sofia Blasco, Valentina Espeche, Valentina Sucar, Lourdes Ason, Marcela Alexia Lazarte, Mora Bappé, Marie Curie, Naiara Vidal, Rocio Lardies, Constaza Puertas" };
-            Random rand = new Random();
-            return nombresAlternativos[rand.Next(nombresAlternativos.Length)];
+            string [] nombresAlternativos = ["Belén Ason", "Sofía Rodriguez del Busto", "Milena Salem", "Maia Naessens", "Sofia Blasco", "Valentina Espeche", "Valentina Sucar", "Lourdes Ason", "Marcela Alexia Lazarte", "Mora Bappé", "Naiara Vidal", "Rocio Lardies", "Constaza Puertas" ];
+            Random rand = new Random(Guid.NewGuid().GetHashCode());
+            return nombresAlternativos[rand.Next(0, nombresAlternativos.Length)];
         }
 
         public string [] NombresPasteleros()

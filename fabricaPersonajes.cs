@@ -4,7 +4,7 @@ namespace Juego
     {
         public List<Pastelero> CrearPasteleros()
         {
-            var rnd = new Random();
+            var rnd = new Random(Guid.NewGuid().GetHashCode());
             string [] listaNombres = new Api().NombresPasteleros(); 
             List<Pastelero> Pasteleros= new List<Pastelero>();
             Pastelero pasteleroCreativo = new Pastelero(listaNombres[0], rnd.Next(0, 4), 4, rnd.Next(0, 3), rnd.Next(0, 2), "Creatividad");

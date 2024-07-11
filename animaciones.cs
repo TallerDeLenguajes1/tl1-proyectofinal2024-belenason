@@ -1,18 +1,28 @@
 namespace Juego{
   class Animaciones{
-    public static void Animar()
+    public static void Animar(int nroAnimacion, double duracion)
       {
-        string[] steps = ObtenerFotogramas(); //Llamada a la funcion que tiene los ascii art de la animacion
+        string [] steps;
+        int cantFotogramas;
+        if (nroAnimacion == 1)
+        {
+          steps = ObtenerFotogramas();
+          cantFotogramas = ObtenerFotogramas().Length;
+        } else
+        {
+          steps = ObtenerFotogramas2();
+          cantFotogramas = ObtenerFotogramas2().Length;
+        }
           Console.Clear(); //Limpiamos la pantalla
           DateTime startTime = DateTime.Now; //Guarda el tiempo de inicio
-          TimeSpan duracionAnimacion = TimeSpan.FromSeconds(5); //Guardamos en duracionAnimacion un periodo de tiempo de 5 segundos
+          TimeSpan duracionAnimacion = TimeSpan.FromSeconds(duracion); //Guardamos en duracionAnimacion un periodo de tiempo de 5 segundos
           int i = 0;
           //El siguiente bucle continua hasta que se apriete Esc
           do {
               while (!Console.KeyAvailable && (DateTime.Now - startTime < duracionAnimacion)) 
               { //Mientras no se apriete ninguna tecla
                 Console.SetCursorPosition(0,0); //Hace que se empiece a escribir en la posicion (0, 0), lo cual permite que se sobreescriba lo que está en la pantalla
-                string step = steps[i++ % ObtenerFotogramas().Length]; // steps es un arreglo de cadenas que contiene los diferentes fotogramas de la animación. i++ % 10 usa el índice i (incrementado después de cada uso) y el operador módulo (%) para pasar a través de los 10 primeros elementos de steps.
+                string step = steps[i++ % cantFotogramas]; // steps es un arreglo de cadenas que contiene los diferentes fotogramas de la animación. i++ % 10 usa el índice i (incrementado después de cada uso) y el operador módulo (%) para pasar a través de los 10 primeros elementos de steps.
                 Console.Write(step); //Escribe el fotograma actual
                 Thread.Sleep(200); // Esta línea pausa la ejecución del programa durante 200 milisegundos, creando un efecto de animación al mostrar los fotogramas en intervalos regulares.
               }    
@@ -340,6 +350,235 @@ namespace Juego{
 """                              
         ];
     }
+
+    private static string[] ObtenerFotogramas2()
+      {
+        return [
+@"""
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+ ▓▓▓▓▓▓▓▒░░░                                      
+▓▓▓▓▓▓▓▓▓▓░░░                                     
+▓▓▓▓▓▓▓▓▓▓▓▒▒▒                                    
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓                                    
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓                                    
+ ▓▓▓▓▓▓▓▓▓▓▓                                      
+   ▓▓▓▓▓▓▓                                        
+""",
+@"""
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+      ▓▓▓▓▓▒░░                                    
+    ▓▓▓▓▓▓▓▓▓░░░                                  
+   ▓▓▓▓▓▓▓▒▓▓▓▒░░                                 
+   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓                                 
+   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓                                 
+   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓                                 
+     ▓▓▓▓▓▓▓▓▓▓                                   
+       ▓▓▓▓▓▓                                     
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+""",
+@"""
+             ▓▓▓▓▓▒░                              
+          ▓▓▓▓▓▓▓▓▓▓░░░                           
+          ▓▓▓▓▓▓▓▓▓▓▓▒░░                          
+          ▓▓▓▓▓▓▓▓▓▓▓▓▓▓                          
+          ▓▓▓▓▓▓▓▓▓▓▓▓▓▓                          
+          ▓▓▓▓▓▓▓▓▓▓▓▓▓                           
+             ▓▓▓▓▓▓▓                              
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+""",
+@"""
+             ▓▓▓▓▓▓▓▓▒░░                          
+           ▓▓▓▓▓▓▓▓▓▓▓▓▒░░                        
+           ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                        
+           ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                        
+           ▓▓▓▓▓▓▓▓▓▓▓▓▓▓                         
+             ▓▓▓▓▓▓▓▓▓▓                           
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+""", 
+@"""
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                     ▓▓▓▓▓▒░░                     
+                    ▓▓▓▓▓▓▓▓▒░                    
+                  ▓▓▓▓▓▓▓▓▓▓▓▓░░                  
+                  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓                  
+                  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓                  
+                  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓                  
+                    ▓▓▓▓▓▓▓▓▓▓                    
+                     ▓▓▓▓▓▓▓▓                     
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+""",
+@"""
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                  ▒▒▒▒▒           
+                                 ▒▒▒▒▒▒           
+                                 ▓▓▓▓             
+                                 ▓▓▓              
+      ▒▒▒▒▓▓▓▓▓   ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓   ▓▓           
+        ▒▒▓▓▓▓▓▓  ▒▒▒▒▓▓▓▓▒░▒▒▒▒▒  ▓▓▓▓           
+                ▒▒▒▓▓▓▓▓▓▓▓▓▒▒░▒▒▒▒▓▓▓▓           
+           ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▓▓▓▓           
+           ▒▒ ▒▓▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒              
+        ▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▓▓▓▓          
+        ▒▒▒▒▒▒▒▒▒▒▒▒▒▒ ▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓           
+          ▓▓▓▓▓▓▓▓▓    ▒▒▒                        
+        ▓▓▓▓▓▓▓▓                      ▓▓▓▓▓▓      
+          ▓▓▓▓                        ▓▓▓▓▓▓      
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+""",
+@"""
+                                                  
+             ▒▒▒▒▒▒      ▒▒           ▒▒          
+             ▒▒▒▒▒▒     ▒▒▒▒▒      ▒▒▒▒▒▒▒        
+               ▒▒▒▒▒    ▒▒▒▒▒▒   ▒▒▒▒▒▒▒▒▒    ▒▒▒ 
+      ▒▒▒       ▓▓▒▒ ▒▒▒ ▓▒▒▒▒ ▒▒▒▒▓▓▓▒▒    ▒▒▒▒▒ 
+       ▒▒▒▒▒▒▒   ▓▒▒▒▒▒▒  ▒▒▒▒ ▒▒▒▓        ▒▒▒▒▒▒ 
+        ▓▓▒▒▒▒▒▒▒ ▓▓▒▒▒▒▒▒▒▒▒▒▒▒         ▒▒▒▓▓    
+▒▒▓▓      ▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ ▒▒▒▒▒▒▒▒▒        
+▒▒▒▒▒▒       ▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓        
+ ▓▓▒▒▒▒       ▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓   ▒▒▒    
+   ▓▓▓  ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒   
+        ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒    
+        ▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▒▒        
+          ▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▒▒▒▒▒▒▒      
+          ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒      
+        ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓      
+   ▒▒▒▒▒▒▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▒▒        
+ ▒▒▒▒▒▓▓▒▒    ▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒░▒▒▒▒▒    ▒▒        
+ ▓▓▓▓▓    ▒▒▒▒▒▒  ▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒     ▒▒▒▒▒▒   
+        ▓▓▒▒▒▒   ▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▒▒▒▒▒▒▒    ▓▓▓▓   
+               ▓▒▒▒▒▒▒▒▒▓▓▒▒▒▒ ▓▓▓▓▒▒▒▒           
+        ▒▒    ▓▓▒▒▒▒▓▓    ▓▓▒▒▒▒  ▓▓▓▓▒▒          
+    ▓▓▒▒▒▒    ▓▓▓▒▓▓ ▒▒▒    ▓▓▒▒      ▒▒▓▒▒▒      
+   ▓▓▒▒▒▒      ▓▓▓▓  ▒▒▒▓▓            ▒▒▓▓▒▒      
+   ▒▒▒▒                                           
+                                                  
+""",
+@"""
+                                                  
+             ▒▒▒▒▒▒      ▒▒           ▒▒          
+             ▒▒▒▒▒▒     ▒▒▒▒▒      ▒▒▒▒▒▒▒        
+               ▒▒▒▒▒    ▒▒▒▒▒▒   ▒▒▒▒▒▒▒▒▒    ▒▒▒ 
+      ▒▒▒       ▓▓▒▒ ▒▒▒ ▓▒▒▒▒ ▒▒▒▒▓▓▓▒▒    ▒▒▒▒▒ 
+       ▒▒▒▒▒▒▒   ▓▒▒▒▒▒▒  ▒▒▒▒ ▒▒▒▓        ▒▒▒▒▒▒ 
+        ▓▓▒▒▒▒▒▒▒ ▓▓▒▒▒▒▒▒▒▒▒▒▒▒         ▒▒▒▓▓    
+▒▒▓▓      ▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ ▒▒▒▒▒▒▒▒▒        
+▒▒▒▒▒▒       ▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓        
+ ▓▓▒▒▒▒       ▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓   ▒▒▒    
+   ▓▓▓  ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒   
+        ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒    
+        ▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▒▒        
+          ▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▒▒▒▒▒▒▒      
+          ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒      
+        ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓      
+   ▒▒▒▒▒▒▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▒▒        
+ ▒▒▒▒▒▓▓▒▒    ▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒░▒▒▒▒▒    ▒▒        
+ ▓▓▓▓▓    ▒▒▒▒▒▒  ▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒     ▒▒▒▒▒▒   
+        ▓▓▒▒▒▒   ▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▒▒▒▒▒▒▒    ▓▓▓▓   
+               ▓▒▒▒▒▒▒▒▒▓▓▒▒▒▒ ▓▓▓▓▒▒▒▒           
+        ▒▒    ▓▓▒▒▒▒▓▓    ▓▓▒▒▒▒  ▓▓▓▓▒▒          
+    ▓▓▒▒▒▒    ▓▓▓▒▓▓ ▒▒▒    ▓▓▒▒      ▒▒▓▒▒▒      
+   ▓▓▒▒▒▒      ▓▓▓▓  ▒▒▒▓▓            ▒▒▓▓▒▒      
+   ▒▒▒▒                                           
+                                                  
+"""];
+      }
 }
 }
 /*                                    */

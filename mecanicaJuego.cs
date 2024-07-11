@@ -35,27 +35,30 @@ namespace Juego
         //Funcion que recibe el jugador, la lista de pasteleros, y el juez que se ha asignado. Genera una receta aleatoriamente, y en caso de que el jugador aun no haya perdido, le permite decidir como preparar el postre;
         public void PreparadoReceta(Pastelero jugador, Juez juez, List<Pastelero> pasteleros)
         {
-            var rnd = new Random();
+            var rnd = new Random(Guid.NewGuid().GetHashCode());
             Receta recetaAleatoria = Receta.SeleccionadorAleatorioReceta();
-            Console.WriteLine($"El postre a preparar es: {recetaAleatoria.NombreReceta}");
+            Interfaz.PresentadorHablando([$"El postre a preparar es: {recetaAleatoria.NombreReceta}"], false);
 
             if (pasteleros.Contains(jugador))
             {
-                Console.WriteLine("\nA continuación deberá tomar decisiones sobre el preparado del postre.");
+                Console.Clear();
+                Console.WriteLine("A continuación deberá tomar decisiones sobre el preparado del postre.");
+                Console.WriteLine("Presione cualquier tecla para continuar");
                 Console.ReadKey();
                 float gradingPlato = ProcesoDecisionJugador(recetaAleatoria);
                 jugador.PuntuacionUltimaRonda = juez.CalcularPuntuacion(jugador.Creatividad, jugador.Presentacion, jugador.Rapidez, jugador.Sabor, gradingPlato);
             }
             else
             {
+                Console.WriteLine("Presione cualquier tecla para continuar");
                 Console.ReadKey();
             }
 
             Console.Clear();
-            Animaciones.Animar();
+            Animaciones.Animar(1, 5);
             Console.Clear();
-            Console.WriteLine($"Veamos como les fue a nuestros pasteleros en la preparación de {recetaAleatoria.NombreReceta}");
 
+            Interfaz.PresentadorHablando([$"Veamos como les fue a nuestros pasteleros en la preparación de {recetaAleatoria.NombreReceta}"], false);
             MostrarResultadosPasteleros(pasteleros, jugador, juez, recetaAleatoria, rnd);
         }
 
@@ -80,13 +83,13 @@ namespace Juego
             {
                 if (rival == jugador)
                 {
-                    Console.WriteLine($"\nRecibiste una puntuación de {jugador.PuntuacionUltimaRonda}.\n");
+                    Interfaz.PresentadorHablando([$"Recibiste una puntuación de {jugador.PuntuacionUltimaRonda}."], false);
                 }
                 else
                 {
                     float gradingPlato = PuntuacionDecisionesReceta(receta, [rnd.Next(0, 2), rnd.Next(0, 2), rnd.Next(0, 2), rnd.Next(0, 2)]);
                     rival.PuntuacionUltimaRonda = juez.CalcularPuntuacion(rival.Creatividad, rival.Presentacion, rival.Presentacion, rival.Rapidez, gradingPlato);
-                    Console.WriteLine($"{rival.Nombre} recibió una puntuación de {rival.PuntuacionUltimaRonda}");
+                    Interfaz.PresentadorHablando([$"{rival.Nombre} recibió una puntuación de {rival.PuntuacionUltimaRonda}"], false);
                 }
             }
         }
@@ -125,53 +128,51 @@ namespace Juego
 
         public static Pastelero ResolverEmpate(List <Pastelero> pastelerosEmpatados)
         {
-            var rnd = new Random();
-            Console.WriteLine("Oh! Ha ocurrido un empate entre nuestros pasteleros.");
-            Console.WriteLine("No les vamos a mentir. No pensamos que esto fuera a pasar, así que no tenemos una forma planeada de resolver el empate...");
-            Console.WriteLine("No nos queda otra que seleccionar el pastelero eliminado tirando una moneda.");
+            var rnd = new Random(Guid.NewGuid().GetHashCode());
+            Interfaz.PresentadorHablando(["Oh! Ha ocurrido un empate entre nuestros pasteleros.", "No les vamos a mentir. No pensamos que esto fuera a pasar, así que no tenemos una forma planeada de resolver el empate...", "No nos queda otra que seleccionar el pastelero eliminado tirando una moneda."], false);
             Pastelero pasteleroEliminado = pastelerosEmpatados[rnd.Next(0, pastelerosEmpatados.Count)];
             return pasteleroEliminado;
         }
         public List<Pastelero> PrimeraRonda(Pastelero jugador, List<Pastelero> pasteleros, List<Juez> jueces)
         {
-            return EjecutarRonda(jugador, pasteleros, jueces, "𝔹𝕚𝕖𝕟𝕧𝕖𝕟𝕚𝕕𝕠𝕤 𝕒 𝕝𝕒 𝕡𝕣𝕚𝕞𝕖𝕣𝕒 𝕣𝕠𝕟𝕕𝕒", 4, false);
+            Interfaz.MostrarTextoAColorCentrado([$"  ___         _                                                      _        ", """ | _ \  _ _  (_)  _ __    ___   _ _   __ _     _ _   ___   _ _    __| |  __ _ """, """ |  _/ | '_| | | | '  \  / -_) | '_| / _` |   | '_| / _ \ | ' \  / _` | / _` |""", """ |_|   |_|   |_| |_|_|_| \___| |_|   \__,_|   |_|   \___/ |_||_| \__,_| \__,_|"""], "Red");
+            Thread.Sleep(3000);
+            Console.Clear();
+            return EjecutarRonda(jugador, pasteleros, jueces, "Bienvenidos a la primera ronda!!!", 4, false);
         }
 
         public List<Pastelero> SegundaRonda(Pastelero jugador, List<Pastelero> pasteleros, List<Juez> jueces)
         {
-            return EjecutarRonda(jugador, pasteleros, jueces, "𝔹𝕚𝕖𝕟𝕧𝕖𝕟𝕚𝕕𝕠𝕤 𝕒 𝕝𝕒 𝕤𝕖𝕘𝕦𝕟𝕕𝕒 𝕣𝕠𝕟𝕕𝕒", 3, false);
+            Interfaz.MostrarTextoAColorCentrado([$"  ___                                 _                                  _        ", """ / __|  ___   __ _   _  _   _ _    __| |  __ _     _ _   ___   _ _    __| |  __ _ """, """ \__ \ / -_) / _` | | || | | ' \  / _` | / _` |   | '_| / _ \ | ' \  / _` | / _` |""", """ |___/ \___| \__, |  \_,_| |_||_| \__,_| \__,_|   |_|   \___/ |_||_| \__,_| \__,_|""", """             |___/                                                                """], "Red");
+            Thread.Sleep(3000);
+            Console.Clear();
+            return EjecutarRonda(jugador, pasteleros, jueces, "Bienvenidos a la segunda ronda!!!", 3, false);
         }
 
         public List<Pastelero> RondaFinal(Pastelero jugador, List<Pastelero> pasteleros, List<Juez> jueces)
         {
-            return EjecutarRonda(jugador, pasteleros, jueces, "𝔹𝕚𝕖𝕟𝕧𝕖𝕟𝕚𝕕𝕠𝕤 𝕒 𝕝𝕒 𝕗𝕚𝕟𝕒𝕝 𝕕𝕖 𝔹𝕒𝕜𝕖𝕆𝕗𝕗 𝔸𝕣𝕘𝕖𝕟𝕥𝕚𝕟𝕒", 2, true);
+            Interfaz.MostrarTextoAColorCentrado([$"  ___                   _             __   _                 _ ", """ | _ \  ___   _ _    __| |  __ _     / _| (_)  _ _    __ _  | |""", """ |   / / _ \ | ' \  / _` | / _` |   |  _| | | | ' \  / _` | | |""", """ |_|_\ \___/ |_||_| \__,_| \__,_|   |_|   |_| |_||_| \__,_| |_|"""], "Red");
+            Thread.Sleep(3000);
+            Console.Clear();
+            return EjecutarRonda(jugador, pasteleros, jueces, "Bienvenidos a la RONDA FINAL!!!", 2, true);
         }
 
         private List<Pastelero> EjecutarRonda(Pastelero jugador, List<Pastelero> pasteleros, List<Juez> jueces, string mensaje, int cantidadPasteleros, bool esFinal)
         {
-            var semilla = Environment.TickCount;
-            var rnd = new Random(semilla);
+            var rnd = new Random(Guid.NewGuid().GetHashCode());
             Juez juezElegido = jueces[rnd.Next(0, jueces.Count)];
-            Console.ForegroundColor = ConsoleColor.Red;
-
-            Interfaz.EscribirConSuspenso(mensaje, false);
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine($"\nEn esta ronda se enfrentaran {cantidadPasteleros} pasteleros.");
-            Console.WriteLine($"El juez asignado es: {juezElegido.Nombre}");
-
+            Interfaz.PresentadorHablando([mensaje, $"En esta ronda se enfrentaran {cantidadPasteleros} pasteleros.", $"El juez asignado es: {juezElegido.Nombre}"], false);
             PreparadoReceta(jugador, juezElegido, pasteleros);
             Pastelero eliminado = EliminarPasteleroPuntuacionMasBaja(pasteleros);
             pasteleros.Remove(eliminado);
 
             if (!esFinal)
             {
-                Interfaz.EscribirConSuspenso($"\nEl pastelero eliminado es {eliminado.Nombre}", false);
+                Interfaz.PresentadorHablando([$"El pastelero eliminado es {eliminado.Nombre}"], true);
                 if (eliminado == jugador)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\nHAZ PERDIDO\n");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("Ahora simplemente podras observar el resto de la competencia.");
+                    Interfaz.PresentadorHablando(["HAZ PERDIDO", "Ahora simplemente podras observar el resto de la competencia."], false);
+                    Animaciones.Animar(2, 1.5);
                 }
                 Console.WriteLine("\nPresione cualquier tecla para continuar a la siguiente ronda.");
                 Console.ReadKey();
@@ -180,21 +181,18 @@ namespace Juego
             else
             {
                 Pastelero ganador = pasteleros[0];
-                Console.ForegroundColor = ConsoleColor.Red;
-                Interfaz.EscribirConSuspenso($"\nEl GANADOR de Bake Off Argentina es {ganador.Nombre}", false);
-                Console.ForegroundColor = ConsoleColor.White;
-
+                Interfaz.PresentadorHablando([$"El GANADOR de Bake Off Argentina es {ganador.Nombre}"], true);
                 if (eliminado == jugador)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\nHAZ PERDIDO.\n");
-                    Console.ForegroundColor = ConsoleColor.White;
+                    Interfaz.PresentadorHablando(["HAZ PERDIDO.\n"], false);
+                    Animaciones.Animar(2, 1.5);
+
                 }
                 if (ganador == jugador)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\nFELICIDADES! HAZ GANADO.\n");
-                    Console.ForegroundColor = ConsoleColor.White;
+                    Interfaz.PresentadorHablando(["FELICIDADES! HAZ GANADO."], false);
+                    Console.Clear();
+                    Interfaz.MostrarTextoAColorCentrado(Interfaz.ObtenerAsciiTxt("trofeo.txt"), "White");
                 }
 
                 HistorialJson.GuardarGanador(ganador);

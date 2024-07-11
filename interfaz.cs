@@ -1,7 +1,8 @@
-using Juego;
-
 public class Interfaz
 {
+    /// <summary>
+    /// Muestra por consola el nombre del juego, la descripción del mismo y las instrucciones de cómo jugar.
+    /// </summary>
     public static void TituloInstruccionesDescripcion()
     {
         MostrarTextoAColorCentrado(ObtenerAsciiTxt("AsciiArtTitulo.txt"), "Red");
@@ -14,6 +15,9 @@ public class Interfaz
         MostrarInstrucciones();
     }
 
+    /// <summary>
+    /// Muestra por consola la presentación del juego.
+    /// </summary>
     public static void MostrarPresentacion()
     {
         Console.ForegroundColor = ConsoleColor.Red;
@@ -25,6 +29,9 @@ public class Interfaz
         Console.Clear(); 
     }
 
+    /// <summary>
+    /// Muestra por consola el cómo funciona el juego.
+    /// </summary>
     public static void MostrarInstrucciones()
     {
         Console.ForegroundColor = ConsoleColor.Red;
@@ -36,12 +43,22 @@ public class Interfaz
         Console.Clear();
     }
 
+    /// <summary>
+    /// Lee un archivo de texto y obtiene el arte ASCII contenido en él.
+    /// </summary>
+    /// <param name="ruta">Ruta del archivo de texto que contiene el arte ASCII.</param>
+    /// <returns>Arreglo de cadenas de texto, donde cada cadena representa una línea del arte ASCII.</returns>
     public static string [] ObtenerAsciiTxt(string ruta)
     {
         string [] asciiArt = File.ReadAllLines(ruta);
         return asciiArt;
     }
 
+    /// <summary>
+    /// Muestra un texto centrado en la consola con un color específico.
+    /// </summary>
+    /// <param name="texto">Arreglo de cadenas de texto a mostrar, cada cadena representa una línea.</param>
+    /// <param name="color">Nombre del color de la fuente en inglés en formato string.</param>
     public static void MostrarTextoAColorCentrado(string [] texto, string color)
     {
         Console.CursorVisible = false;
@@ -64,6 +81,11 @@ public class Interfaz
         Console.ResetColor();   
     }
 
+    /// <summary>
+    /// Escribe una oración en la consola con un efecto de suspenso.
+    /// </summary>
+    /// <param name="oracion">La oración a escribir en la consola.</param>
+    /// <param name="centrado">Indica si la oración debe ser centrada horizontalmente en la consola.</param>
     public static void EscribirConSuspenso(string oracion, bool centrado)
     {
         if (centrado)
@@ -76,6 +98,37 @@ public class Interfaz
             Thread.Sleep(50);
         }
         Console.Write("\n");
+    }
+
+        public static void PresentadorHablando(string [] mjes, bool suspenso)
+        {
+            string [] asciiArt = ObtenerAsciiTxt("presentador.txt");
+            foreach (var linea in asciiArt)
+            {
+                Console.WriteLine(linea);
+            }
+            int cursorLeft = 0; // Column position (start of the next line)
+            int cursorTop = asciiArt.Length; // Row position (number of lines in the ASCII art)
+            ActualizarMensajes(mjes, cursorLeft, cursorTop, 3000, suspenso);
+        }
+
+    static void ActualizarMensajes(string[] mjes, int cursorLeft, int cursorTop, int intervalo, bool suspenso)
+    {
+        for (int index = 0; index < mjes.Length; index++)
+        {
+            Console.SetCursorPosition(cursorLeft, cursorTop);
+            Console.Write(new string(' ', Console.WindowWidth)); // Limpiar el mensaje anterior
+            Console.SetCursorPosition(cursorLeft, cursorTop);
+            if (suspenso)
+            {
+                EscribirConSuspenso(mjes[index], false);
+            } else
+            {
+                Console.Write(mjes[index]);
+            }
+            Thread.Sleep(intervalo);
+        }
+        Console.Clear();
     }
 
 }
