@@ -71,6 +71,7 @@ namespace Juego
                 Menu menuPaso = new Menu(new string[] { receta.PreguntaPreparacion[i] }, receta.OpcionesPasos[i]);
                 decisiones[i] = menuPaso.Correr(false, "White");
                 CorregirRespuesta(receta.Pasos[i], decisiones[i]);
+                Console.WriteLine("Presione cualquier tecla para continuar");
                 Console.ReadKey();
             }
 
@@ -172,7 +173,7 @@ namespace Juego
                 if (eliminado == jugador)
                 {
                     Interfaz.PresentadorHablando(["HAZ PERDIDO", "Ahora simplemente podras observar el resto de la competencia."], false);
-                    Animaciones.Animar(2, 1.5);
+                    Animaciones.Animar(2, 1);
                 }
                 Console.WriteLine("\nPresione cualquier tecla para continuar a la siguiente ronda.");
                 Console.ReadKey();
@@ -185,7 +186,7 @@ namespace Juego
                 if (eliminado == jugador)
                 {
                     Interfaz.PresentadorHablando(["HAZ PERDIDO.\n"], false);
-                    Animaciones.Animar(2, 1.5);
+                    Animaciones.Animar(2, 1);
 
                 }
                 if (ganador == jugador)
