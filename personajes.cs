@@ -28,6 +28,9 @@ namespace Juego
             Especialidad = especialidad;
         }
 
+        /// <summary>
+        /// Muestra por pantalla el nombre y la especialidad del pastelero.
+        /// </summary>
         public void MostrarInfoPastelero()
         {
             Console.WriteLine($"Nombre: {Nombre}");
@@ -48,6 +51,15 @@ namespace Juego
             ecuacionPuntua = ec;
         }
 
+        /// <summary>
+        /// Calcula la puntuación total que recibe un pastelero basada en sus atributos y el juez que evalúa.
+        /// </summary>
+        /// <param name="creatividad">La puntuación de creatividad.</param>
+        /// <param name="presentacion">La puntuación de presentación.</param>
+        /// <param name="rapidez">La puntuación de rapidez.</param>
+        /// <param name="sabor">La puntuación de sabor.</param>
+        /// <param name="plato">La puntuación del plato.</param>
+        /// <returns>La puntuación total calculada según la ecuación seleccionada.</returns>
         public float CalcularPuntuacion(int creatividad, int presentacion, int rapidez, int sabor, float plato)
         {
             float puntuacion = 0;

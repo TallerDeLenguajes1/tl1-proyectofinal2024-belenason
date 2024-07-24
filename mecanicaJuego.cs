@@ -5,8 +5,6 @@ namespace Juego
 
     class Competencia
     {
-
-        //Función que recibe la receta generada aleatoriamente y los pasos seleccionados ya sea por el jugador o al azar, y calcula el puntaje en relacion a como se hizo el plato
         public static float PuntuacionDecisionesReceta(Receta receta, int [] eleccionPasos)
         {
             float puntaje = 0;
@@ -31,8 +29,6 @@ namespace Juego
             }
         }
         
-
-        //Funcion que recibe el jugador, la lista de pasteleros, y el juez que se ha asignado. Genera una receta aleatoriamente, y en caso de que el jugador aun no haya perdido, le permite decidir como preparar el postre;
         public void PreparadoReceta(Pastelero jugador, Juez juez, List<Pastelero> pasteleros)
         {
             var rnd = new Random(Guid.NewGuid().GetHashCode());
@@ -95,8 +91,6 @@ namespace Juego
             }
         }
 
-
-        //Esta función se fija quien tiene la puntuación más baja y lo elimina. 
         public static Pastelero EliminarPasteleroPuntuacionMasBaja(List <Pastelero> pasteleros)
         {
             List<Pastelero> pastelerosEmpatados = new List<Pastelero>();
@@ -134,6 +128,7 @@ namespace Juego
             Pastelero pasteleroEliminado = pastelerosEmpatados[rnd.Next(0, pastelerosEmpatados.Count)];
             return pasteleroEliminado;
         }
+
         public List<Pastelero> PrimeraRonda(Pastelero jugador, List<Pastelero> pasteleros, List<Juez> jueces)
         {
             Interfaz.MostrarTextoAColorCentrado([$"  ___         _                                                      _        ", """ | _ \  _ _  (_)  _ __    ___   _ _   __ _     _ _   ___   _ _    __| |  __ _ """, """ |  _/ | '_| | | | '  \  / -_) | '_| / _` |   | '_| / _ \ | ' \  / _` | / _` |""", """ |_|   |_|   |_| |_|_|_| \___| |_|   \__,_|   |_|   \___/ |_||_| \__,_| \__,_|"""], "Red");
@@ -193,7 +188,7 @@ namespace Juego
                 {
                     Interfaz.PresentadorHablando(["FELICIDADES! HAZ GANADO."], false);
                     Console.Clear();
-                    Interfaz.MostrarTextoAColorCentrado(Interfaz.ObtenerAsciiTxt("trofeo.txt"), "White");
+                    Interfaz.MostrarTextoAColorCentrado(Interfaz.ObtenerAsciiTxt("data/trofeo.txt"), "White");
                 }
 
                 HistorialJson.GuardarGanador(ganador);
@@ -256,7 +251,7 @@ namespace Juego
         public static void CorrerJuego()
         {
             string [] opciones = {"JUGAR", "Ver historial de ganadores", "Salir"};
-            string[] asciiArtTitulo = Interfaz.ObtenerAsciiTxt("AsciiArtTitulo.txt");
+            string[] asciiArtTitulo = Interfaz.ObtenerAsciiTxt("data/AsciiArtTitulo.txt");
             Menu MenuInicio = new Menu(asciiArtTitulo, opciones);
             int opcionSelecc = MenuInicio.Correr(true, "Red");
             switch (opcionSelecc)

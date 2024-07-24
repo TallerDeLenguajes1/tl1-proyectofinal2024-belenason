@@ -9,14 +9,14 @@ public class HistorialJson
         List<Pastelero> historial = LeerGanadoresDelHistorial();
         historial.Add(pastelero);
         string jsonHistorial = JsonSerializer.Serialize(historial);
-        File.WriteAllText("historial.json", jsonHistorial);
+        File.WriteAllText("data/historial.json", jsonHistorial);
     }
 
     private static List<Pastelero> LeerGanadoresDelHistorial()
     {
         try
         {
-            string jsonHistorial = File.ReadAllText("historial.json");
+            string jsonHistorial = File.ReadAllText("data/historial.json");
             return JsonSerializer.Deserialize<List<Pastelero>>(jsonHistorial);
         }
         catch (FileNotFoundException)

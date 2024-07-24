@@ -20,6 +20,8 @@ Después de una larga búsqueda, encontré una siguiente página la cual usaba u
 El nuevo desafio que se presentaba era que necesitaba los fotogramas de la animación en ascii. Después de mucho buscar fotogramas relacionados con pastelería, y no tener suerte, se me ocurrió la idea de usar un gif. Para separar los fotogramas del gif usé https://ezgif.com/split; a las imagines obtenidas las convertí en ascii utilizando https://www.asciiart.eu/image-to-ascii. Finalmente, centré el ascii art obtenido manualmente. 
 
 ### Utilización de API
-
 Decidí utilizar una API para obtener los nombres de los pasteleros, quienes serían mujeres por decisión propia. Usé la API de fakerapi.it, específicamente la siguiente URL: https://fakerapi.it/api/v1/users?_quantity=1&_gender=female.
+
+### Menu
+Para realizar el menú de opciones utilicé el código mostrado en el video https://www.youtube.com/watch?v=qAWhGEPMlS8&t=2206s con pequeñas modificaciones.
 

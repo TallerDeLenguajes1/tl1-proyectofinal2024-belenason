@@ -5,7 +5,7 @@ public class Interfaz
     /// </summary>
     public static void TituloInstruccionesDescripcion()
     {
-        MostrarTextoAColorCentrado(ObtenerAsciiTxt("AsciiArtTitulo.txt"), "Red");
+        MostrarTextoAColorCentrado(ObtenerAsciiTxt("data/AsciiArtTitulo.txt"), "Red");
         string mensajeInicio = "Presiona cualquier tecla para comenzar";
         Console.SetCursorPosition((Console.BufferWidth - mensajeInicio.Length) / 2, (Console.BufferHeight / 2) + 2);
         Console.WriteLine(mensajeInicio);
@@ -100,18 +100,31 @@ public class Interfaz
         Console.Write("\n");
     }
 
-        public static void PresentadorHablando(string [] mjes, bool suspenso)
+    /// <summary>
+    /// Presenta por pantalla un Ascii Art de presentador y muestra durante un tiempo determinado mensajes recibidos como parámetro.
+    /// </summary>
+    /// <param name="mjes">Oraciones a mostrar.</param>
+    /// <param name="suspenso">Indica si los mensajes se deben escribir con un efecto de suspenso.</param>
+    public static void PresentadorHablando(string [] mjes, bool suspenso)
+    {
+        string [] asciiArt = ObtenerAsciiTxt("data/presentador.txt");
+        foreach (var linea in asciiArt)
         {
-            string [] asciiArt = ObtenerAsciiTxt("presentador.txt");
-            foreach (var linea in asciiArt)
-            {
-                Console.WriteLine(linea);
-            }
-            int cursorLeft = 0; // Column position (start of the next line)
-            int cursorTop = asciiArt.Length; // Row position (number of lines in the ASCII art)
-            ActualizarMensajes(mjes, cursorLeft, cursorTop, 3000, suspenso);
+            Console.WriteLine(linea);
         }
+        int cursorLeft = 0;
+        int cursorTop = asciiArt.Length;
+        ActualizarMensajes(mjes, cursorLeft, cursorTop, 3000, suspenso);
+    }
 
+    /// <summary>
+    /// Va actualizando los mensajes a mostrar por pantalla.
+    /// </summary>
+    /// <param name="mjes">Oraciones a mostrar.</param>
+    /// <param name="cursorLeft">Indica donde se debe posicionar el cursor para escribir con respecto a la izquierda.</param>
+    /// <param name="cursorTop">Indica donde se debe posicionar el cursor para escribir con respecto a la izquierda.</param>
+    /// <param name="intervalo">Indica cuantos milisegundos debe durar cada mensaje.</param>
+    /// <param name="suspenso">Indica si los mensajes se deben escribir con un efecto de suspenso.</param>
     static void ActualizarMensajes(string[] mjes, int cursorLeft, int cursorTop, int intervalo, bool suspenso)
     {
         for (int index = 0; index < mjes.Length; index++)
