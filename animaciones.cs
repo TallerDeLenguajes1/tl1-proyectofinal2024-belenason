@@ -14,6 +14,14 @@ namespace Juego{
           cantFotogramas = ObtenerFotogramas2().Length;
         }
           Console.Clear(); //Limpiamos la pantalla
+          int windowHeight = Console.WindowHeight;
+          bool hayFotogramaDemasiadoAlto = steps.Any(step => step.Split('\n').Length > windowHeight);
+
+          if (hayFotogramaDemasiadoAlto)
+          {
+              return; // Salir de la función si algún fotograma es demasiado alto
+          }
+
           DateTime startTime = DateTime.Now; //Guarda el tiempo de inicio
           TimeSpan duracionAnimacion = TimeSpan.FromSeconds(duracion); //Guardamos en duracionAnimacion un periodo de tiempo de 5 segundos
           int i = 0;
@@ -35,6 +43,7 @@ namespace Juego{
       {
         return [
 @"""
+                                                                                      
                                                                                  +***                   
                                                                                 --=+*+                  
                                                                                -===--                   
@@ -65,6 +74,7 @@ namespace Juego{
                                                             ================                             
 """,
 @"""
+                                                                                                          
                                                                               +***                        
                                                                              :-=++-                       
                                                                              --==-                        
@@ -95,8 +105,8 @@ namespace Juego{
                                                                ================                           
 """
 ,
-@"""
-                                                                          +++                             
+@"""   
+                                                                          +++                                                      
                                                                          =***+                            
                                                                          --=-:                            
                                                                         :=--=-                            
@@ -192,6 +202,7 @@ namespace Juego{
 """
 ,
 @"""
+                                                                                                          
                                                            +**=                                           
                                                           -++=-:                                          
                                                            -===-                                          
@@ -319,6 +330,7 @@ namespace Juego{
 """
 ,
 @"""
+                                                                                                          
                                                                               +***                        
                                                                              :-=++-                       
                                                                              --==-                        

@@ -116,17 +116,26 @@ public static string[] ObtenerAsciiTxt(string ruta)
     /// <param name="suspenso">Indica si los mensajes se deben escribir con un efecto de suspenso.</param>
     public static void PresentadorHablando(string [] mjes, bool suspenso)
     {
-        string [] asciiArt = ObtenerAsciiTxt("data/presentador.txt");
-        if (asciiArt != null)
+        try
         {
-            foreach (var linea in asciiArt)
+            string [] asciiArt = ObtenerAsciiTxt("data/presentador.txt");
+            Console.SetCursorPosition(0, asciiArt.Length);
+            Console.SetCursorPosition(0, 0);
+            if (asciiArt != null)
             {
-                Console.WriteLine(linea);
+                foreach (var linea in asciiArt)
+                {
+                    Console.WriteLine(linea);
+                }
+                int cursorLeft = 0;
+                int cursorTop = asciiArt.Length;
+                ActualizarMensajes(mjes, cursorLeft, cursorTop, 3000, suspenso);
+            } else
+            {
+                ActualizarMensajes(mjes, 0, 0, 3000, suspenso);
             }
-            int cursorLeft = 0;
-            int cursorTop = asciiArt.Length;
-            ActualizarMensajes(mjes, cursorLeft, cursorTop, 3000, suspenso);
-        } else
+        }
+        catch (ArgumentOutOfRangeException)
         {
             ActualizarMensajes(mjes, 0, 0, 3000, suspenso);
         }

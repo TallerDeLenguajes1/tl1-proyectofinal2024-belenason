@@ -188,7 +188,14 @@ namespace Juego
                 {
                     Interfaz.PresentadorHablando(["FELICIDADES! HAZ GANADO."], false);
                     Console.Clear();
-                    Interfaz.MostrarTextoAColorCentrado(Interfaz.ObtenerAsciiTxt("data/trofeo.txt"), "White");
+                    try
+                    {
+                        Interfaz.MostrarTextoAColorCentrado(Interfaz.ObtenerAsciiTxt("data/trofeo.txt"), "White");
+                    }
+                    catch (ArgumentOutOfRangeException)
+                    {
+                        Console.WriteLine("OFICIALMENTE ERES EL GANADOR DE BAKE OFF ARGENTINA");
+                    }
                 }
 
                 HistorialJson.GuardarGanador(ganador);
