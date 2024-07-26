@@ -48,11 +48,17 @@ public class Interfaz
     /// </summary>
     /// <param name="ruta">Ruta del archivo de texto que contiene el arte ASCII.</param>
     /// <returns>Arreglo de cadenas de texto, donde cada cadena representa una línea del arte ASCII.</returns>
-    public static string [] ObtenerAsciiTxt(string ruta)
+public static string[] ObtenerAsciiTxt(string ruta)
+{
+    if (!File.Exists(ruta))
     {
-        string [] asciiArt = File.ReadAllLines(ruta);
+        return null;
+    } else
+    {
+        string[] asciiArt = File.ReadAllLines(ruta);
         return asciiArt;
     }
+}
 
     /// <summary>
     /// Muestra un texto centrado en la consola con un color específico.
@@ -61,24 +67,27 @@ public class Interfaz
     /// <param name="color">Nombre del color de la fuente en inglés en formato string.</param>
     public static void MostrarTextoAColorCentrado(string [] texto, string color)
     {
-        Console.CursorVisible = false;
-        Console.BackgroundColor = ConsoleColor.Black;
-        Console.SetWindowSize(Console.WindowWidth, Console.WindowHeight);
-        Console.Clear();
-        if (Enum.TryParse(color, true, out ConsoleColor consoleColor))
+        if (texto != null)
         {
-            Console.ForegroundColor = consoleColor;
+            Console.CursorVisible = false;
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.SetWindowSize(Console.WindowWidth, Console.WindowHeight);
+            Console.Clear();
+            if (Enum.TryParse(color, true, out ConsoleColor consoleColor))
+            {
+                Console.ForegroundColor = consoleColor;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.White; // Color por defecto si el color ingresado no es válido
+            }
+            for (int i = 0; i < texto.Length; i++)
+            {
+                Console.SetCursorPosition((Console.BufferWidth - texto[i].Length) / 2, Console.BufferHeight / 4 + i);
+                Console.WriteLine(texto[i]);
+            }
+            Console.ResetColor();   
         }
-        else
-        {
-            Console.ForegroundColor = ConsoleColor.White; // Color por defecto si el color ingresado no es válido
-        }
-        for (int i = 0; i < texto.Length; i++)
-        {
-            Console.SetCursorPosition((Console.BufferWidth - texto[i].Length) / 2, Console.BufferHeight / 4 + i);
-            Console.WriteLine(texto[i]);
-        }
-        Console.ResetColor();   
     }
 
     /// <summary>
@@ -108,13 +117,19 @@ public class Interfaz
     public static void PresentadorHablando(string [] mjes, bool suspenso)
     {
         string [] asciiArt = ObtenerAsciiTxt("data/presentador.txt");
-        foreach (var linea in asciiArt)
+        if (asciiArt != null)
         {
-            Console.WriteLine(linea);
+            foreach (var linea in asciiArt)
+            {
+                Console.WriteLine(linea);
+            }
+            int cursorLeft = 0;
+            int cursorTop = asciiArt.Length;
+            ActualizarMensajes(mjes, cursorLeft, cursorTop, 3000, suspenso);
+        } else
+        {
+            ActualizarMensajes(mjes, 0, 0, 3000, suspenso);
         }
-        int cursorLeft = 0;
-        int cursorTop = asciiArt.Length;
-        ActualizarMensajes(mjes, cursorLeft, cursorTop, 3000, suspenso);
     }
 
     /// <summary>

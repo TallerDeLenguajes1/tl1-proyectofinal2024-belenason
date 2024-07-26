@@ -33,6 +33,10 @@ public class HistorialJson
         foreach (var ganador in historial)
         {
             Console.WriteLine($"Nombre: {ganador.Nombre}");
+        } 
+        if (historial.Count == 0)
+        {
+            Console.WriteLine("El historial se encuentra vacío");
         }
         Console.WriteLine("Presione una tecla para volver");
         Console.ReadKey();

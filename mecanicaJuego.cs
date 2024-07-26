@@ -33,8 +33,8 @@ namespace Juego
         {
             var rnd = new Random(Guid.NewGuid().GetHashCode());
             Receta recetaAleatoria = Receta.SeleccionadorAleatorioReceta();
-            Interfaz.PresentadorHablando([$"El postre a preparar es: {recetaAleatoria.NombreReceta}"], false);
 
+            Interfaz.PresentadorHablando([$"El postre a preparar es: {recetaAleatoria.NombreReceta}"], false);
             if (pasteleros.Contains(jugador))
             {
                 Console.Clear();

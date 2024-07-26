@@ -158,5 +158,357 @@
             ["Enfriarla en el refrigerador", "Formar los \u00E9clairs y hornear inmediatamente"]
         ],
         "Pasos": [0, 0, 0, 1]
+    },
+    {
+        "NombreReceta": "Tarta de Limón",
+        "PreguntaPreparacion": [
+            "¿Qué tipo de base se utiliza para la tarta de limón?",
+            "¿Cuál es el ingrediente principal del relleno de limón?",
+            "¿Cómo se debe batir el merengue para la cobertura?",
+            "¿Cuánto tiempo debe hornearse la tarta de limón?"
+        ],
+        "OpcionesPasos": [
+            ["Masa de hojaldre", "Masa quebrada"],
+            ["Jugo de limón", "Extracto de limón"],
+            ["A punto de nieve", "Suave y esponjoso"],
+            ["15 minutos", "25 minutos"]
+        ],
+        "Pasos": [1, 0, 0, 1]
+    },
+    {
+        "NombreReceta": "Panna Cotta",
+        "PreguntaPreparacion": [
+            "¿Cuál es el ingrediente principal de la panna cotta?",
+            "¿Qué tipo de gelatina se utiliza para la panna cotta?",
+            "¿Cómo se debe calentar la mezcla de panna cotta?",
+            "¿Cuánto tiempo debe refrigerarse la panna cotta antes de servirla?"
+        ],
+        "OpcionesPasos": [
+            ["Crema de leche", "Leche condensada"],
+            ["Gelatina sin sabor", "Gelatina con sabor"],
+            ["A fuego lento", "A fuego alto"],
+            ["4 horas", "6 horas"]
+        ],
+        "Pasos": [0, 0, 0, 0]
+    },
+    {
+        "NombreReceta": "Mousse de Chocolate",
+        "PreguntaPreparacion": [
+            "¿Qué tipo de chocolate se utiliza en la mousse de chocolate?",
+            "¿Cómo se debe derretir el chocolate para la mousse?",
+            "¿Qué ingrediente le da esponjosidad a la mousse?",
+            "¿Cuánto tiempo debe refrigerarse la mousse antes de servirla?"
+        ],
+        "OpcionesPasos": [
+            ["Chocolate amargo", "Chocolate con leche"],
+            ["Microondas", "Baño maría"],
+            ["Levadura", "Claras de huevo"],
+            ["3 horas", "2 horas"]
+        ],
+        "Pasos": [0, 1, 1, 0]
+    },
+    {
+        "NombreReceta": "Pan de Banana",
+        "PreguntaPreparacion": [
+            "¿Cuál es el ingrediente principal del pan de banana?",
+            "¿Qué tipo de azúcar se utiliza en el pan de banana?",
+            "¿Cómo deben estar las bananas para la preparación?",
+            "¿Cuánto tiempo debe hornearse el pan de banana?"
+        ],
+        "OpcionesPasos": [
+            ["Bananas verdes", "Bananas maduras"],
+            ["Azúcar blanco", "Azúcar moreno"],
+            ["Completamente maduras con manchas negras", "Ligeramente maduras"],
+            ["45 minutos", "60 minutos"]
+        ],
+        "Pasos": [1, 1, 0, 1]
+    },
+    {
+        "NombreReceta": "Galette de Manzana",
+        "PreguntaPreparacion": [
+            "¿Qué tipo de masa se utiliza para la galette de manzana?",
+            "¿Cuál es el ingrediente principal del relleno de manzana?",
+            "¿Cómo se debe cortar la manzana para la galette?",
+            "¿Cuánto tiempo debe hornearse la galette de manzana?"
+        ],
+        "OpcionesPasos": [
+            ["Masa filo", "Masa quebrada"],
+            ["Manzanas Fuji", "Manzanas Granny Smith"],
+            ["En cubos", "En rodajas finas"],
+            ["25 minutos", "40 minutos"]
+        ],
+        "Pasos": [1, 1, 1, 1]
+    },
+    {
+        "NombreReceta": "Crème Caramel",
+        "PreguntaPreparacion": [
+            "¿Cuál es el ingrediente principal de la crème caramel?",
+            "¿Qué tipo de leche se utiliza en la crème caramel?",
+            "¿Cómo se debe preparar el caramelo para la crème caramel?",
+            "¿Cuánto tiempo debe hornearse la crème caramel?"
+        ],
+        "OpcionesPasos": [
+            ["Huevos", "Harina"],
+            ["Leche descremada", "Leche entera"],
+            ["A fuego lento", "A fuego alto"],
+            ["45 minutos", "30 minutos"]
+        ],
+        "Pasos": [0, 1, 0, 0]
+    },
+    {
+        "NombreReceta": "Clafoutis de Cerezas",
+        "PreguntaPreparacion": [
+            "¿Qué variedad de cerezas es tradicionalmente utilizada en el clafoutis?",
+            "¿Qué tipo de harina se utiliza en el clafoutis?",
+            "¿Cómo deben prepararse las cerezas para el clafoutis?",
+            "¿Cuánto tiempo debe hornearse el clafoutis?"
+        ],
+        "OpcionesPasos": [
+            ["Cerezas negras", "Cerezas ácidas"],
+            ["Harina de trigo", "Harina de maíz"],
+            ["Con hueso", "Deshuesadas"],
+            ["30 minutos", "50 minutos"]
+        ],
+        "Pasos": [0, 0, 1, 1]
+    },
+    {
+        "NombreReceta": "Fraisier",
+        "PreguntaPreparacion": [
+            "¿Cuál es la fruta principal en el fraisier?",
+            "¿Qué tipo de crema se utiliza en el fraisier?",
+            "¿Cómo deben cortarse las frutillas para el fraisier?",
+            "¿Cuánto tiempo debe refrigerarse el fraisier antes de servirlo?"
+        ],
+        "OpcionesPasos": [
+            ["Frutilla", "Frambuesas"],
+            ["Crema pastelera", "Crema chantilly"],
+            ["En rodajas", "En mitades"],
+            ["2 horas", "4 horas"]
+        ],
+        "Pasos": [0, 0, 1, 1]
+    },
+    {
+        "NombreReceta": "Madeleines",
+        "PreguntaPreparacion": [
+            "¿Cuál es el ingrediente principal de las madeleines?",
+            "¿Qué tipo de molde se utiliza para las madeleines?",
+            "¿C\u00F3mo debe estar la mantequilla para las madeleines?",
+            "¿Cuánto tiempo deben hornearse las madeleines?"
+        ],
+        "OpcionesPasos": [
+            ["Leche", "Huevos"],
+            ["Molde de muffins", "Molde de conchas"],
+            ["Derretida", "Fría"],
+            ["8 minutos", "12 minutos"]
+        ],
+        "Pasos": [1, 1, 0, 1]
+    },
+    {
+        "NombreReceta": "Flan",
+        "PreguntaPreparacion": [
+            "¿Cuál es el ingrediente principal del flan?",
+            "¿Qué tipo de leche se utiliza en el flan?",
+            "¿Cómo se debe preparar el caramelo para el flan?",
+            "¿Cuánto tiempo debe hornearse el flan?"
+        ],
+        "OpcionesPasos": [
+            ["Huevos", "Gelatina"],
+            ["Leche evaporada", "Leche condensada"],
+            ["A fuego lento", "A fuego alto"],
+            ["30 minutos", "60 minutos"]
+        ],
+        "Pasos": [0, 1, 0, 1]
+    },
+    {
+        "NombreReceta": "Mousse de Frutilla",
+        "PreguntaPreparacion": [
+            "¿Qué tipo de frutillas proporciona el mejor sabor para la mousse de frutilla?",
+            "¿Cuál es la crema más adecuada para lograr una textura ligera y esponjosa en la mousse?",
+            "¿Cuál es el procedimiento correcto para preparar la gelatina antes de ser incorporarada?",
+            "¿Cuál es el tiempo mínimo de refrigeración?"
+        ],
+        "OpcionesPasos": [
+            ["Frutillas frescas", "Frutillas congeladas"],
+            ["Crema para batir", "Crema doble"],
+            ["Disuelta en agua fría", "Disuelta en agua caliente"],
+            ["2 horas", "4 horas"]
+        ],
+        "Pasos": [0, 0, 1, 1]
+    },
+    {
+        "NombreReceta": "Crema Catalana",
+        "PreguntaPreparacion": [
+            "¿Cuál es el ingrediente principal de la crema catalana?",
+            "¿Qué tipo de leche se utiliza en la crema catalana?",
+            "¿Cómo se debe caramelizar la superficie de la crema catalana?",
+            "¿Cuánto tiempo debe refrigerarse la crema catalana antes de servirla?"
+        ],
+        "OpcionesPasos": [
+            ["Huevos", "Gelatina"],
+            ["Leche entera", "Leche descremada"],
+            ["Con un soplete", "Con un mechero"],
+            ["3 horas", "2 horas"]
+        ],
+        "Pasos": [0, 0, 0, 0]
+    },
+    {
+        "NombreReceta": "Carrot Cake",
+        "PreguntaPreparacion": [
+            "¿Cuál es el ingrediente principal de la Carrot Cake?",
+            "¿Qué tipo de azúcar se utiliza en la Carrot Cake?",
+            "¿A qué temperatura debe estar el horno?",
+            "¿Cuánto tiempo debe hornearse el Carrot Cake?"
+        ],
+        "OpcionesPasos": [
+            ["Zanahorias en cubos", "Zanahorias ralladas"],
+            ["Azúcar blanco", "Azúcar moreno"],
+            ["240°C", "180°C"],
+            ["30 minutos", "50 minutos"]
+        ],
+        "Pasos": [1, 1, 1, 1]
+    },
+    {
+        "NombreReceta": "Baba au Rhum",
+        "PreguntaPreparacion": [
+            "¿Cuál es el ingrediente principal del baba au rhum?",
+            "¿Qué tipo de licor se utiliza en el baba au rhum?",
+            "¿Cómo se debe preparar la masa del baba au rhum?",
+            "¿Cuánto tiempo debe reposar el baba au rhum después de añadir el licor?"
+        ],
+        "OpcionesPasos": [
+            ["Harina de trigo", "Harina de maíz"],
+            ["Ron", "Whisky"],
+            ["Fermentada", "Sin fermentar"],
+            ["1 hora", "2 horas"]
+        ],
+        "Pasos": [0, 0, 0, 1]
+    },
+    {
+        "NombreReceta": "Galletas de Avena",
+        "PreguntaPreparacion": [
+            "¿Cuál es el ingrediente principal de las galletas de avena?",
+            "¿Qué tipo de azúcar se utiliza en las galletas de avena?",
+            "¿Cómo se deben preparar los ingredientes secos?",
+            "¿Cuánto tiempo deben hornearse las galletas de avena?"
+        ],
+        "OpcionesPasos": [
+            ["Avena", "Harina"],
+            ["Azúcar morena", "Azúcar blanca"],
+            ["Tamizados", "Mezclados directamente"],
+            ["10 minutos", "15 minutos"]
+        ],
+        "Pasos": [0, 0, 1, 1]
+    },
+    {
+        "NombreReceta": "Bizcocho de Yogur",
+        "PreguntaPreparacion": [
+            "¿Cuál es el ingrediente principal del bizcocho de yogur?",
+            "¿Qué tipo de azúcar se utiliza en el bizcocho?",
+            "¿Cómo se debe mezclar la masa del bizcocho de yogur?",
+            "¿Cuánto tiempo debe hornearse el bizcocho de yogur?"
+        ],
+        "OpcionesPasos": [
+            ["Yogur de sabores", "Yogur natural"],
+            ["Azúcar morena", "Azúcar blanca"],
+            ["Batido enérgicamente", "Con movimientos envolventes"],
+            ["40 minutos", "30 minutos"]
+        ],
+        "Pasos": [1, 1, 1, 0]
+    },
+    {
+        "NombreReceta": "Arroz con Leche",
+        "PreguntaPreparacion": [
+            "¿Cuál es el método tradicional para cocinar el arroz antes de añadir la leche?",
+            "¿Qué tipo de leche se utiliza en el arroz con leche?",
+            "¿Cómo se debe cocinar el arroz para el arroz con leche?",
+            "¿Cuánto tiempo debe cocinarse el arroz con leche?"
+        ],
+        "OpcionesPasos": [
+            ["Lavar y remojar el arroz durante 30 minutos", "Cocinar el arroz directamente sin lavar"],
+            ["Leche entera", "Leche evaporada"],
+            ["A fuego lento", "A fuego alto"],
+            ["30 minutos", "60 minutos"]
+        ],
+        "Pasos": [0, 0, 0, 1]
+    }, 
+    {
+        "NombreReceta": "Lamingtons",
+        "PreguntaPreparacion": [
+            "¿Cuál es el ingrediente principal del bizcocho en los Lamingtons?",
+            "¿Qué fruta utiliza?",
+            "¿Cómo se debe preparar el coco para los Lamingtons?",
+            "¿Cuánto tiempo debe enfriarse el bizcocho antes de cortarlo y cubrirlo?"
+        ],
+        "OpcionesPasos": [
+            ["Harina de trigo", "Harina de almendra"],
+            ["Coco", "Banana"],
+            ["Rallado finamente", "Tostado"],
+            ["2 horas", "30 minutos"]
+        ],
+        "Pasos": [0, 0, 1, 1]
+    },
+    {
+        "NombreReceta": "Tarta de Santiago",
+        "PreguntaPreparacion": [
+            "¿Cuál es el ingrediente principal de la Tarta de Santiago?",
+            "¿Qué tipo de licor se utiliza tradicionalmente en la Tarta de Santiago?",
+            "¿Cómo se debe preparar la almendra para la tarta?",
+            "¿Cuánto tiempo debe hornearse la Tarta de Santiago?"
+        ],
+        "OpcionesPasos": [
+            ["Harina de trigo", "Almendra molida"],
+            ["Licor de almendra", "Licor de anís"],
+            ["Pelada y molida", "Con cáscara"],
+            ["50 minutos", "30 minutos"]
+        ],
+        "Pasos": [1, 1, 0, 0]
+    },
+    {
+        "NombreReceta": "Basbousa",
+        "PreguntaPreparacion": [
+            "¿Cuál es el ingrediente principal de la Basbousa?",
+            "¿Qué tipo de jarabe se utiliza en la Basbousa?",
+            "¿Cómo se debe preparar la masa antes de hornearla?",
+            "¿Cuánto tiempo debe hornearse la Basbousa?"
+        ],
+        "OpcionesPasos": [
+            ["Sémola", "Harina de trigo"],
+            ["Jarabe de miel", "Jarabe de azúcar"],
+            ["Reposada por 30 minutos", "Refrigerada por 1 hora"],
+            ["30 minutos", "45 minutos"]
+        ],
+        "Pasos": [0, 1, 0, 1]
+    },
+    {
+        "NombreReceta": "Semlor",
+        "PreguntaPreparacion": [
+            "¿Cuál es el ingrediente principal del relleno en los Semlor?",
+            "¿Qué tipo de masa se utiliza para los Semlor?",
+            "¿Cómo se debe preparar la crema para el relleno?",
+            "¿Cuánto tiempo deben reposar los Semlor antes de servirlos?"
+        ],
+        "OpcionesPasos": [
+            ["Pasta de almendra", "Mermelada"],
+            ["Masa de cardamomo", "Masa de hojaldre"],
+            ["Batida con azúcar", "Cocinada con vainilla"],
+            ["30 minutos", "2 horas"]
+        ],
+        "Pasos": [0, 0, 0, 0]
+    },
+    {
+        "NombreReceta": "Tarta de Frangipane",
+        "PreguntaPreparacion": [
+            "¿Cuál es el ingrediente principal de la crema de frangipane?",
+            "¿Qué tipo de fruta se utiliza tradicionalmente en la Tarta de Frangipane?",
+            "¿Cómo se debe preparar la masa antes de hornearla?",
+            "¿Cuánto tiempo debe hornearse la Tarta de Frangipane?"
+        ],
+        "OpcionesPasos": [
+            ["Almendra molida", "Harina de trigo"],
+            ["Manzanas", "Peras"],
+            ["Reposada en el refrigerador", "Directamente al horno"],
+            ["30 minutos", "45 minutos"]
+        ],
+        "Pasos": [0, 1, 0, 1]
     }
 ]

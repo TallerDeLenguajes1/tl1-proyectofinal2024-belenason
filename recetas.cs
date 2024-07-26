@@ -46,16 +46,24 @@ namespace Juego
             }
             catch (FileNotFoundException)
             {
-                Console.WriteLine("Ha ocurrido un error con la lista de recetas.");
+                Console.WriteLine("Ha ocurrido un error y el juego no puede continuar. Volviendo al menú de inicio...");
+                Thread.Sleep(4000);
+                Game.CorrerJuego();
                 return null;
             }
         }
 
         public static Receta SeleccionadorAleatorioReceta() //Funcion que selecciona de forma aleatoria las recetas
         {
-            Random rnd = new Random();
-            int index = rnd.Next(LeerRecetasDelJson().Count);
-            return LeerRecetasDelJson()[index];
+            Random rnd = new Random(Guid.NewGuid().GetHashCode());
+            if (LeerRecetasDelJson() != null)
+            {
+                int index = rnd.Next(LeerRecetasDelJson().Count);
+                return LeerRecetasDelJson()[index];
+            } else
+            {
+                return null;
+            }
         }
     }
 }
