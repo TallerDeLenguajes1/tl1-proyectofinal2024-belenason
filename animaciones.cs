@@ -15,7 +15,16 @@ namespace Juego{
         }
           Console.Clear(); //Limpiamos la pantalla
           int windowHeight = Console.WindowHeight;
-          bool hayFotogramaDemasiadoAlto = steps.Any(step => step.Split('\n').Length > windowHeight);
+          bool hayFotogramaDemasiadoAlto = false;
+
+          foreach (var step in steps)
+          {
+              if (step.Split('\n').Length > windowHeight)
+              {
+                  hayFotogramaDemasiadoAlto = true;
+                  break;
+              }
+          }
 
           if (hayFotogramaDemasiadoAlto)
           {

@@ -2,7 +2,7 @@ namespace Juego
 {
     class fabricaDePersonajes
     {
-        public List<Pastelero> CrearPasteleros()
+        /*public List<Pastelero> CrearPasteleros()
         {
             var rnd = new Random(Guid.NewGuid().GetHashCode());
             string [] listaNombres = new Api().NombresPasteleros(); 
@@ -16,7 +16,7 @@ namespace Juego
             Pasteleros.Add(pasteleroRapido);
             Pasteleros.Add(pasteleroSabroso);
             return Pasteleros;
-        }
+        }*/
 
         public List<Juez> CrearJueces()
         {
@@ -31,5 +31,34 @@ namespace Juego
             jueces.Add(JuezSabroso);
             return jueces;
         }
+
+        public List<Pastelero> CrearPasteleros()
+        {
+            string [] tipos = ["Creativo", "Estetico", "Sabroso", "Rapido"];
+            string [] listaNombres = new Api().NombresPasteleros();
+            List<Pastelero> Pasteleros= new List<Pastelero>();
+            Pastelero NuevoPastelero = null;
+            foreach (var tipo in tipos)
+            {
+                var rnd = new Random(Guid.NewGuid().GetHashCode());
+                if(tipo == "Creativo") // Rap=2, sabor=1 , presentación=3, creatividad =4
+                {
+                    NuevoPastelero = new Pastelero(listaNombres[0], rnd.Next(0, 4), 4, rnd.Next(0, 3), rnd.Next(0, 2), "Creatividad");
+                } else if (tipo == "Estetico") // Rap=1, sabor=2 , presentación=4, creatividad =3
+                {
+                    NuevoPastelero = new Pastelero(listaNombres[1], 4, rnd.Next(0, 4), rnd.Next(0, 2), rnd.Next(0, 3), "Presentacion");
+                } else if (tipo == "Rapido") // Rap=4, sabor=3 , presentación=1, creatividad =2
+                {
+                    NuevoPastelero = new Pastelero(listaNombres[2], rnd.Next(0, 2), rnd.Next(0, 3) , 4, rnd.Next(0, 4), "Rapidez");
+                } else if (tipo == "Sabroso") // Rap=3, sabor=4 , presentación=2, creatividad =1
+                {
+                    NuevoPastelero = new Pastelero(listaNombres[3], rnd.Next(0, 3), rnd.Next(0, 2), rnd.Next(0, 4), 4, "Combinacion de sabores");
+                }
+                Pasteleros.Add(NuevoPastelero);
+            }
+            return Pasteleros;
+
+        }
+
     }
 }

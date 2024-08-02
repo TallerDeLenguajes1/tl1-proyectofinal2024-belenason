@@ -38,6 +38,9 @@ public class Interfaz
         Console.WriteLine("¿Como se juega?");
         Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine("Usted comenzara eligiendo el pastelero con el que se desea cocinar, cada uno tiene su especialidad (creatividad, presentacion, eleccion de sabor, rapidez) en la cual se asegura que tiene puntaje alto. A continuacion se le asignara al azar un juez. Cada juez tiene criterios distintos de evaluacion, de acuerdo a lo que considera mas importante, asi que piense bien que pastelero elige. Posteriormente tendra que preparar un postre sin que se le diga la receta, teniendo que elegir entre las opciones brindadas. Finalmente, considerando en primer lugar si las elecciones de como preparar el plato son correctas, y luego las habilidades del pastelero elegido en relacion de como valora el juez que le toco cada una de estas habilidades.");
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("\n ATENCION! Se recomienda tener la pantalla del juego maximizada para que los gráficos se muestren adecuadamente.");
+        Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine("\nPresione cualquier tecla para continuar.");
         Console.ReadKey();
         Console.Clear();
