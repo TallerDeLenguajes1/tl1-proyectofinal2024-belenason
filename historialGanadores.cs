@@ -4,6 +4,24 @@ using Juego;
 
 public class HistorialJson
 {
+    public static void MostrarHistorial()
+    {
+        List<Pastelero> historial = LeerGanadoresDelHistorial();
+        Console.Clear();
+        Console.WriteLine("----HISTORIAL DE GANADORES----");
+        foreach (var ganador in historial)
+        {
+            Console.WriteLine($"Nombre: {ganador.Nombre}");
+        } 
+        if (historial.Count == 0)
+        {
+            Console.WriteLine("El historial se encuentra vacío.");
+        }
+        Console.WriteLine("Presione una tecla para volver");
+        Console.ReadKey();
+        Game.MenuPrincipal();
+    }
+
     public static void GuardarGanador(Pastelero pastelero)
     {
         List<Pastelero> historial = LeerGanadoresDelHistorial();
@@ -23,24 +41,6 @@ public class HistorialJson
         {
             return new List<Pastelero>();
         }
-    }
-
-    public static void MostrarHistorial()
-    {
-        List<Pastelero> historial = LeerGanadoresDelHistorial();
-        Console.Clear();
-        Console.WriteLine("----HISTORIAL DE GANADORES----");
-        foreach (var ganador in historial)
-        {
-            Console.WriteLine($"Nombre: {ganador.Nombre}");
-        } 
-        if (historial.Count == 0)
-        {
-            Console.WriteLine("El historial se encuentra vacío");
-        }
-        Console.WriteLine("Presione una tecla para volver");
-        Console.ReadKey();
-        Game.CorrerJuego();
     }
 }
 

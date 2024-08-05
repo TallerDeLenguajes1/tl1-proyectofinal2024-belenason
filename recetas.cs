@@ -22,15 +22,19 @@ namespace Juego
         }
 
         /// <summary>
-        /// Guarda en un archivo RecetasJson una receta.
+        /// Selecciona de forma aleatoria una receta entre las guardadas en RecetasJson.json.
         /// </summary>
-        /// <param name="receta">Receta a guardar.</param>
-        public static void GuardarRecetaEnJson(Receta receta)
+        public static Receta SeleccionadorAleatorioReceta()
         {
-            List<Receta> ListaDeRecetas = LeerRecetasDelJson();
-            ListaDeRecetas.Add(receta);
-            string jsonRecetas= JsonSerializer.Serialize(ListaDeRecetas);
-            File.WriteAllText("data/RecetasJson.json", jsonRecetas);
+            var rnd = new Random(Guid.NewGuid().GetHashCode());
+            if (LeerRecetasDelJson() != null)
+            {
+                int index = rnd.Next(LeerRecetasDelJson().Count);
+                return LeerRecetasDelJson()[index];
+            } else
+            {
+                return null;
+            }
         }
 
         /// <summary>
@@ -48,20 +52,7 @@ namespace Juego
             {
                 Console.WriteLine("Ha ocurrido un error y el juego no puede continuar. Volviendo al menú de inicio...");
                 Thread.Sleep(4000);
-                Game.CorrerJuego();
-                return null;
-            }
-        }
-
-        public static Receta SeleccionadorAleatorioReceta() //Funcion que selecciona de forma aleatoria las recetas
-        {
-            Random rnd = new Random(Guid.NewGuid().GetHashCode());
-            if (LeerRecetasDelJson() != null)
-            {
-                int index = rnd.Next(LeerRecetasDelJson().Count);
-                return LeerRecetasDelJson()[index];
-            } else
-            {
+                Game.MenuPrincipal();
                 return null;
             }
         }

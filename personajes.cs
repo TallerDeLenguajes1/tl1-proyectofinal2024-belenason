@@ -65,22 +65,22 @@ namespace Juego
             float puntuacion = 0;
             switch (ecuacionPuntua)
             {
-                case 1: // Rap=4, sabor=3 , presentación=1, creatividad =2
+                case 1:
                 {
                     puntuacion = (float)(0.6 * plato + 0.6*rapidez + 0.2*sabor + 0.4*presentacion + 0.3*creatividad);
                     break;
                 }
-                case 2: //Rap=2, sabor=1 , presentación=3, creatividad =4
+                case 2:
                 {
                     puntuacion = (float)(0.6 * plato + 0.3*rapidez + 0.4*sabor + 0.2*presentacion + 0.6*creatividad);
                     break;
                 }
-                case 3: // Rap=1, sabor=2 , presentación=4, creatividad =3
+                case 3:
                 {
                     puntuacion = (float)(0.6 * plato + 0.4*rapidez + 0.3*sabor + 0.6*presentacion + 0.2*creatividad);
                     break;
                 }
-                case 4: // Rap=3, sabor=4 , presentación=2, creatividad =1
+                case 4:
                 {
                     puntuacion = (float)(0.6 * plato + 0.2*rapidez + 0.6*sabor + 0.3*presentacion + 0.4*creatividad);
                     break;
