@@ -7,9 +7,9 @@ namespace Juego
         {
             var jueces= new List<Juez>();
             string[] nombres = ["Maru Botana", "Pamela Villar", "Eva Arguinano", "Dolli Irigoyen"];
-            for (int i = 1; i <= nombres.Length; i++)
+            for (int i = 0; i < nombres.Length; i++)
             {
-                var nuevoJuez = new Juez(nombres[i], i);
+                var nuevoJuez = new Juez(nombres[i], i+1);
                 jueces.Add(nuevoJuez);
             }
             return jueces;
