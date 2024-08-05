@@ -86,6 +86,10 @@ namespace Juego
                     break;
                 }
             }
+            if (puntuacion > 10)
+            {
+                puntuacion = 10;
+            }
             return puntuacion;
         }
     }

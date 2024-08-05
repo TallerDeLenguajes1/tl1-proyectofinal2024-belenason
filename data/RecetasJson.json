@@ -1,11 +1,11 @@
 [
     {
-        "NombreReceta": "Tiramisu",
+        "NombreReceta": "Tiramisú",
         "PreguntaPreparacion": [
-            "Cual es el queso principal que se utiliza en la preparaci\u00F3n del tiramisu?",
-            "Que tipo de licor se usa tradicionalmente en el tiramisu?",
-            "Como se debe preparar el caf\u00E9 para el tiramisu?",
-            "Cuanto tiempo debe refrigerarse el tiramisu antes de servirlo?"
+            "Cuál es el queso principal que se utiliza en la preparación del tiramisú?",
+            "Qué tipo de licor se usa tradicionalmente en el tiramisú?",
+            "Como se debe preparar el café para el tiramisú?",
+            "Cuánto tiempo debe refrigerarse el tiramisú antes de servirlo?"
         ],
         "OpcionesPasos": [
             ["Ricotta", "Mascarpone"],
@@ -18,15 +18,15 @@
     {
         "NombreReceta": "Macarons",
         "PreguntaPreparacion": [
-            "Que tipo de harina se utiliza para hacer macarons?",
-            "Cu\u00E1l es el punto clave para obtener la textura adecuada en los macarons?",
-            "Qu\u00E9 tipo de merengue se utiliza en la elaboraci\u00F3n de macarons?",
-            "Cual es el indicador de que los macarons estan listos para hornear?"
+            "Qué tipo de harina se utiliza para hacer macarons?",
+            "Cuál es el punto clave para obtener la textura adecuada en los macarons?",
+            "Qué tipo de merengue se utiliza en la elaboración de macarons?",
+            "Cuál es el indicador de que los macarons estan listos para hornear?"
         ],
         "OpcionesPasos": [
             ["Harina de trigo", "Harina de almendra"],
             ["Hornear a alta temperatura", "Dejar secar la masa antes de hornear"],
-            ["Merengue frances", "Merengue italiano"],
+            ["Merengue francés", "Merengue italiano"],
             ["La superficie se seca y no se pega al tacto", "La masa se vuelve brillante"]
         ],
         "Pasos": [1, 1, 1, 0]
@@ -34,39 +34,39 @@
     {
         "NombreReceta": "Cheesecake",
         "PreguntaPreparacion": [
-            "Cu\u00E1l es el ingrediente principal de la base del cheesecake?",
-            "Cual es la mejor forma de evitar que se agriete un cheesecake durante la coccion?",
-            "Que tipo de queso se usa tradicionalmente en un cheesecake?",
-            "Que se debe hacer con el cheesecake despu\u00E9s de sacarlo del horno y dejarlo enfriar a temperatura ambiente?"
+            "Cuál es el ingrediente principal de la base del cheesecake?",
+            "Cuál es la mejor forma de evitar que se agriete un cheesecake durante la cocción?",
+            "Qué tipo de queso se usa tradicionalmente en un cheesecake?",
+            "Qué se debe hacer con el cheesecake después de sacarlo del horno y dejarlo enfriar a temperatura ambiente?"
         ],
         "OpcionesPasos": [
             ["Bizcocho", "Galletas trituradas"],
-            ["Cocer a banio Maria", "Cocer a alta temperatura"],
+            ["Cocer a baño Maráa", "Cocer a alta temperatura"],
             ["Queso crema", "Queso Ricotta"],
             ["Servir inmediatamente", "Refrigerar antes de servir"]
         ],
         "Pasos": [1, 0, 0, 1]
     },
     {
-        "NombreReceta": "Creme brulee",
+        "NombreReceta": "Crème brûlée",
         "PreguntaPreparacion": [
-            "Que se utiliza para caramelizar la parte superior de una creme brulee?",
-            "Cual es la consistencia adecuada de una creme brulee despu\u00E9s de hornearla?",
-            "Qu\u00E9 tipo de azucar se utiliza para caramelizar la parte superior de una cr\u00E8me brulee?",
-            "A que temperatura se debe hornear una creme brulee?"
+            "Qué se utiliza para caramelizar la parte superior de una crème brûlée?",
+            "Cuál es la consistencia adecuada de una crème brûlée después de hornearla?",
+            "Qué tipo de azúcar se utiliza para caramelizar la parte superior de una crème brûlée?",
+            "A qué temperatura se debe hornear una crème brûlée?"
         ],
         "OpcionesPasos": [
             ["Horno", "Soplete de cocina"],
             ["Firme pero ligeramente temblorosa en el centro", "Totalmente firme"],
-            ["Azucar glas", "Azucar granulada"],
-            ["220\u00B0C", "150\u00B0C"]
+            ["Azúcar glas", "Azúcar granulada"],
+            ["220 °C", "150 °C"]
         ],
         "Pasos": [1, 0, 1, 1]
     },
     {
-        "NombreReceta": "Souffl\u00E9 de chocolate",
+        "NombreReceta": "Soufflé de chocolate",
         "PreguntaPreparacion": [
-            "Qu\u00E9 es esencial para que un souffl\u00E9 de chocolate suba correctamente?",
+            "Qué es esencial para que un souffl\u00E9 de chocolate suba correctamente?",
             "Cu\u00E1ndo se debe servir un souffl\u00E9 de chocolate?",
             "Cu\u00E1l es el recipiente m\u00E1s adecuado para hornear un souffl\u00E9 de chocolate?",
             "Qu\u00E9 se debe hacer con los bordes del ramekin antes de verter la mezcla del souffl\u00E9?"
@@ -75,14 +75,14 @@
             ["Agregar levadura", "Batir bien las claras de huevo"],
             ["Despu\u00E9s de enfriar", "Inmediatamente despu\u00E9s de sacarlo del horno"],
             ["Ramekin", "Molde desmontable"],
-            ["Engrasarlos con manteca", "Engrasarlos y espolvorearlos con azucar"]
+            ["Engrasarlos con manteca", "Engrasarlos y espolvorearlos con azúcar"]
         ],
         "Pasos": [1, 1, 0, 1]
     },
     {
         "NombreReceta": "Pavlova",
         "PreguntaPreparacion": [
-            "Cual es el ingrediente principal de la base de una pavlova?",
+            "Cuál es el ingrediente principal de la base de una pavlova?",
             "C\u00F3mo se consigue la textura crujiente por fuera y suave por dentro de una pavlova?",
             "Qu\u00E9 se usa com\u00FAnmente para decorar una pavlova?",
             "Qu\u00E9 tipo de az\u00FAcar es preferible para hacer pavlova?"
@@ -98,7 +98,7 @@
     {
         "NombreReceta": "Profiteroles",
         "PreguntaPreparacion": [
-            "Que tipo de masa se utiliza para hacer profiteroles?",
+            "Qué tipo de masa se utiliza para hacer profiteroles?",
             "C\u00F3mo se rellenan tradicionalmente los profiteroles?",
             "Qu\u00E9 se suele utilizar como cobertura para los profiteroles?",
             "C\u00F3mo se debe hornear la masa choux para que los profiteroles queden huecos por dentro?"
@@ -106,7 +106,7 @@
         "OpcionesPasos": [
             ["Masa choux", "Masa quebrada"],
             ["Con mermelada", "Con crema pastelera"],
-            ["Chocolate fundido", "Azucar glas"],
+            ["Chocolate fundido", "Azúcar glas"],
             ["Hornear a alta temperatura primero y luego bajar la temperatura", "Hornear a baja temperatura y luego subir la temperatura"]
         ],
         "Pasos": [0, 1, 0, 0]
@@ -130,7 +130,7 @@
     {
         "NombreReceta": "Tarta Tatin",
         "PreguntaPreparacion": [
-            "Que tipo de manzanas se utilizan com\u00FAnmente para hacer una tarta Tatin?",
+            "Qué tipo de manzanas se utilizan com\u00FAnmente para hacer una tarta Tatin?",
             "Cu\u00E1l es la t\u00E9cnica clave para preparar la tarta Tatin?",
             "Qu\u00E9 tipo de masa se utiliza para cubrir la tarta Tatin?",
             "C\u00F3mo se sirve tradicionalmente la tarta Tatin?"
@@ -139,14 +139,14 @@
             ["Manzanas Golden", "Manzanas Granny Smith"],
             ["Caramelizar las manzanas antes de hornear", "Cocinar las manzanas junto con la masa"],
             ["Masa choux", "Masa quebrada"],
-            ["Caliente con crema o helado", "Fria con fruta fresca"]
+            ["Caliente con crema o helado", "Fría con fruta fresca"]
         ],
         "Pasos": [1, 0, 1, 0]
     },
     {
-        "NombreReceta": "Eclairs",
+        "NombreReceta": "Éclairs",
         "PreguntaPreparacion": [
-            "Que tipo de masa se utiliza para hacer eclairs?",
+            "Qué tipo de masa se utiliza para hacer éclairs?",
             "Qu\u00E9 se utiliza com\u00FAnmente para rellenar \u00E9clairs?",
             "Cu\u00E1l es la cobertura tradicional de los \u00E9clairs?",
             "Qu\u00E9 se debe hacer con la masa choux antes de hornearla para hacer \u00E9clairs?"
@@ -154,7 +154,7 @@
         "OpcionesPasos": [
             ["Masa choux", "Masa quebrada"],
             ["Crema pastelera", "Mermelada"],
-            ["Glaseado de chocolate", "Azucar glas"],
+            ["Glaseado de chocolate", "Azúcar glas"],
             ["Enfriarla en el refrigerador", "Formar los \u00E9clairs y hornear inmediatamente"]
         ],
         "Pasos": [0, 0, 0, 1]

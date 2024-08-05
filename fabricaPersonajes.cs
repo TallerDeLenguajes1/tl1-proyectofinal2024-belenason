@@ -3,13 +3,13 @@ namespace Juego
     class fabricaDePersonajes
     {
 
-        public List<Juez> CrearJueces()
+        public static List<Juez> CrearJueces()
         {
             List<Juez> jueces= new List<Juez>();
             Juez JuezRapido = new Juez("Maru Botana", 1);
             Juez JuezCreativo = new Juez("Pamela Villar", 2);
             Juez JuezEstetico = new Juez("Eva Arguinano", 3);
-            Juez JuezSabroso = new Juez("Dolly Irigoyen", 4);
+            Juez JuezSabroso = new Juez("Dolli Irigoyen", 4);
             jueces.Add(JuezCreativo);
             jueces.Add(JuezEstetico);
             jueces.Add(JuezRapido);
@@ -17,7 +17,7 @@ namespace Juego
             return jueces;
         }
 
-        public Pastelero CrearPasteleroSegunTipo(string nombre, string tipo)
+        public static Pastelero CrearPasteleroSegunTipo(string nombre, string tipo)
         {
             var rnd = new Random(Guid.NewGuid().GetHashCode());
             Pastelero NuevoPastelero = null;
@@ -42,7 +42,7 @@ namespace Juego
             return NuevoPastelero;
         }
 
-        public List<Pastelero> CrearPasteleros()
+        public static List<Pastelero> CrearPasteleros()
         {
             string[] tipos = { "Creativo", "Estetico", "Sabroso", "Rapido"};
             string[] listaNombres = new Api().NombresPasteleros();

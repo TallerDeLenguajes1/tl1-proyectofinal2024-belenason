@@ -18,7 +18,7 @@ namespace Juego
             return puntaje;
         }
 
-        public void CorregirRespuesta(int respuestaCorrecta, int respuestaDada)
+        public static void CorregirRespuesta(int respuestaCorrecta, int respuestaDada)
         {
             if (respuestaCorrecta == respuestaDada)
             {
@@ -167,7 +167,7 @@ namespace Juego
                 Interfaz.PresentadorHablando([$"El pastelero eliminado es {eliminado.Nombre}"], true);
                 if (eliminado == jugador)
                 {
-                    Interfaz.PresentadorHablando(["HAZ PERDIDO", "Ahora simplemente podras observar el resto de la competencia."], false);
+                    Interfaz.PresentadorHablando(["HAS PERDIDO", "Ahora simplemente podras observar el resto de la competencia."], false);
                     Animaciones.Animar(2, 1);
                 }
                 Console.WriteLine("\nPresione cualquier tecla para continuar a la siguiente ronda.");
@@ -180,13 +180,13 @@ namespace Juego
                 Interfaz.PresentadorHablando([$"El GANADOR de Bake Off Argentina es {ganador.Nombre}"], true);
                 if (eliminado == jugador)
                 {
-                    Interfaz.PresentadorHablando(["HAZ PERDIDO.\n"], false);
+                    Interfaz.PresentadorHablando(["HAS PERDIDO.\n"], false);
                     Animaciones.Animar(2, 1);
 
                 }
                 if (ganador == jugador)
                 {
-                    Interfaz.PresentadorHablando(["FELICIDADES! HAZ GANADO."], false);
+                    Interfaz.PresentadorHablando(["FELICIDADES! HAS GANADO."], false);
                     Console.Clear();
                     try
                     {
@@ -268,9 +268,8 @@ namespace Juego
                     Interfaz.EscribirConSuspenso("Cargando...", true);
                     List<Pastelero> pasteleros;
                     List <Juez> jueces;
-                    fabricaDePersonajes fabrica = new fabricaDePersonajes();
-                    pasteleros = fabrica.CrearPasteleros();
-                    jueces = fabrica.CrearJueces();
+                    pasteleros = fabricaDePersonajes.CrearPasteleros();
+                    jueces = fabricaDePersonajes.CrearJueces();
                     Competencia competencia = new Competencia();
                     Pastelero jugador = Competencia.EleccionPastelero(pasteleros);
                     pasteleros = competencia.PrimeraRonda(jugador, pasteleros, jueces);
